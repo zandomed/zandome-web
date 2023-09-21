@@ -8,8 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "prettier \"**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}\" && eslint \"src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}\"",
-    "lint:fix": "prettier --write \"**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}\" && eslint --fix \"src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}\""
+    "lint": "prettier --check \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint \"src/**/*.{js,ts,jsx,tsx,astro}\"",
+    "lint:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\""
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.0",
@@ -24,6 +24,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "prettier": "^3.0.3",
     "prettier-config-standard": "^7.0.0",
-    "prettier-plugin-astro": "^0.12.0"
+    "prettier-plugin-astro": "^0.12.0",
+    "typescript": "^5.2.2"
   }
 }
