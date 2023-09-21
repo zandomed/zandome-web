@@ -1,16 +1,17 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import ZandomeLogo from '@components/ZandomeLogo.astro'
+import ContactWays from '@components/ContactWays.astro'
 ---
 
 <Layout title='Zandome | Miguel Mendoza'>
-  <div
-    class='flex h-full w-full flex-col items-center justify-center pointer-events-none select-none'
-  >
+  <div class='flex h-full w-full flex-col items-center justify-center'>
     <div class='mb-6 max-w-[200px]'>
       <ZandomeLogo />
     </div>
-    <div class='mb-8 flex flex-col items-center animate-fadeLoadingText'>
+    <div
+      class='mb-8 flex flex-col items-center animate-fadeLoadingText pointer-events-none select-none'
+    >
       <h1 class='text-6xl mb-2'>Zandome</h1>
       <div class='text-slate-400'>
         <span class='text-[20px] font-bold'>
@@ -32,6 +33,9 @@ import ZandomeLogo from '@components/ZandomeLogo.astro'
           </span>
         </span>
       </div>
+    </div>
+    <div>
+      <ContactWays />
     </div>
   </div>
 </Layout>
