@@ -1,7 +1,25 @@
 {
-  "name": "zandome-web-astro",
+  "name": "zandome-web",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "license": "MIT",
+  "author": "Miguel Mendoza (Zandome)",
+  "description": "Miguel Mendoza (Zandome) Portfolio Web",
+  "release": {
+    "branch": "main",
+    "tag": true
+  },
+  "contributors": [
+    {
+      "name": "Miguel Mendoza (Zandome)",
+      "email": "miguel@zandome.com",
+      "url": "https://zandome.com"
+    }
+  ],
+  "packageManager": "bun@1.0.18",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
