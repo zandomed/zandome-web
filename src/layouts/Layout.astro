@@ -2,8 +2,9 @@
 import '@fontsource/poppins'
 import '@/styles/global.css'
 
-import GoogleAnalytics from '@/components/GoogleAnalytics.astro'
+import { version } from '@package'
 
+import GoogleAnalytics from '@/components/GoogleAnalytics.astro'
 interface Props {
   title: string
 }
@@ -14,7 +15,32 @@ const description =
   "I'm Miguel Mendoza, Full Stack Developer, here in my Portfolio I will show you my projects, strengths, skills and how to get in touch with me."
 ---
 
-<!doctype html>
+<!-- Theme Logic -->
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme')
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+  }
+
+  const isDark = getThemePreference() === 'dark'
+  document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
+
+  if (typeof localStorage !== 'undefined') {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark')
+      localStorage.setItem('theme', isDark ? 'dark' : 'light')
+    })
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+  }
+</script>
+
 <html lang='en'>
   <head>
     <meta charset='UTF-8' />
@@ -24,6 +50,7 @@ const description =
 
     <!-- HTML Meta Tags -->
     <title>{title}</title>
+    <meta name='version' content={version} />
     <meta name='description' content={description} />
     <meta name='robots' content='index, follow' />
     <meta
