@@ -19,7 +19,7 @@ export default defineConfig({
     }),
     react()
   ],
-  output: 'server',
+  output: 'static',
   adapter: vercel({
     analytics: true,
     speedInsights: {
