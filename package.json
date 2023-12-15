@@ -27,7 +27,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "prettier --check \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint \"src/**/*.{js,ts,jsx,tsx,astro}\"",
-    "lint:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\""
+    "lint:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
+    "deps:update": "bunx npm-check-updates --interactive --format group"
   },
   "dependencies": {
     "@astrojs/tailwind": "5.0.3",
@@ -37,14 +38,14 @@
   },
   "devDependencies": {
     "@astrojs/partytown": "2.0.2",
-    "@typescript-eslint/parser": "^6.7.2",
-    "bun-types": "^1.0.2",
-    "eslint": "^8.49.0",
-    "eslint-plugin-astro": "^0.29.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "prettier": "^3.0.3",
+    "@typescript-eslint/parser": "^6.14.0",
+    "bun-types": "^1.0.18",
+    "eslint": "^8.55.0",
+    "eslint-plugin-astro": "^0.31.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "prettier": "^3.1.1",
     "prettier-config-standard": "^7.0.0",
-    "prettier-plugin-astro": "^0.12.0",
-    "typescript": "^5.2.2"
+    "prettier-plugin-astro": "^0.12.2",
+    "typescript": "^5.3.3"
   }
 }
