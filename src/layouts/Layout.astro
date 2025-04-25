@@ -1,18 +1,18 @@
 ---
-import '@fontsource/poppins'
-import '@/styles/global.css'
+import '@fontsource/poppins';
+import '@/styles/global.css';
 
-import { version } from '@package'
+import { version } from '@package';
 
-import GoogleAnalytics from '@/components/GoogleAnalytics.astro'
+import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
 interface Props {
-  title: string
+  title: string;
 }
 
-const { title } = Astro.props
+const { title } = Astro.props;
 
 const description =
-  "I'm Miguel Mendoza, Full Stack Developer, here in my Portfolio I will show you my projects, strengths, skills and how to get in touch with me."
+  "I'm Miguel Mendoza, Full Stack Developer, here in my Portfolio I will show you my projects, strengths, skills and how to get in touch with me.";
 ---
 
 <!-- Theme Logic -->
@@ -86,7 +86,7 @@ const description =
 
     <GoogleAnalytics />
   </head>
-  <body>
+  <body class="dark">
     <main class='h-full'>
       <slot />
     </main>

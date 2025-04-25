@@ -1,29 +1,29 @@
-import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
-import partytown from '@astrojs/partytown'
-import react from '@astrojs/react'
+import partytown from '@astrojs/partytown';
+import react from '@astrojs/react';
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from 'astro/config';
 
-import vercel from '@astrojs/vercel/static'
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    tailwind({
-      applyBaseStyles: false
-    }),
     partytown({
       // Adds dataLayer.push as a forwarding-event.
       config: {
-        forward: ['dataLayer.push']
-      }
+        forward: ['dataLayer.push'],
+      },
     }),
-    react()
+    react(),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   output: 'static',
   adapter: vercel({
     analytics: true,
     speedInsights: {
-      enabled: true
-    }
-  })
-})
+      enabled: true,
+    },
+  }),
+});

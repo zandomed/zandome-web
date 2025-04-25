@@ -3,18 +3,18 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">20.0.0"
+    "node": ">22"
   },
   "license": "MIT",
-  "author": "Miguel Mendoza (Zandome)",
-  "description": "Miguel Mendoza (Zandome) Portfolio Web",
+  "author": "Miguel Mendoza",
+  "description": "Miguel Mendoza Portfolio Web",
   "release": {
     "branch": "main",
     "tag": true
   },
   "contributors": [
     {
-      "name": "Miguel Mendoza (Zandome)",
+      "name": "Miguel Mendoza",
       "email": "miguel@zandome.com",
       "url": "https://zandome.com"
     }
@@ -31,46 +31,26 @@
     "deps:update": "bunx npm-check-updates --interactive --format group"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.8",
+    "@astrojs/react": "^4.2.5",
     "@astrojs/tailwind": "5.0.4",
-    "@astrojs/vercel": "^6.1.0",
+    "@astrojs/vercel": "^8.1.4",
     "@fontsource/poppins": "^5.0.8",
-    "@headlessui/react": "^1.7.17",
-    "@headlessui/tailwindcss": "^0.2.0",
     "@tabler/icons-react": "^2.44.0",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "astro": "4.0.7",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.2.0",
-    "tailwindcss": "^3.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "@tailwindcss/vite": "^4.1.4",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "astro": "^5.7.5",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwind-merge": "^3.2.0",
+    "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
-    "@astrojs/partytown": "2.0.2",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
-    "astro-eslint-parser": "^0.16.0",
-    "bun-types": "^1.0.20",
-    "eslint": "^8.56.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-prettier": "^5.1.2",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-tailwindcss": "^3.13.0",
-    "eslint-plugin-unused-imports": "^3.0.0",
-    "eslint-plugin-astro": "^0.31.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "prettier": "^3.1.1",
-    "prettier-config-standard": "^7.0.0",
-    "prettier-plugin-astro": "^0.12.2",
-    "typescript": "^5.3.3"
+    "@astrojs/partytown": "^2.1.4",
+    "@biomejs/biome": "1.9.4",
+    "bun-types": "1.2.10",
+    "typescript": "5.8.3"
   }
 }
