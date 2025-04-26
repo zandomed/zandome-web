@@ -1,18 +1,28 @@
-import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
-import partytown from '@astrojs/partytown'
+import partytown from '@astrojs/partytown';
+import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config';
+
+import vercel from '@astrojs/vercel';
+
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    tailwind({
-      applyBaseStyles: false
-    }),
-    partytown({
-      // Adds dataLayer.push as a forwarding-event.
-      config: {
-        forward: ['dataLayer.push']
-      }
-    })
-  ]
-})
+  site: 'https://zandome.com',
+  integrations: [partytown({
+    config: {
+      forward: ['dataLayer.push'],
+    },
+  }), react(), sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  output: 'static',
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    maxDuration: 8,
+  }),
+});

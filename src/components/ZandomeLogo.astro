@@ -9,11 +9,6 @@
   xml:space='preserve'
 >
   <defs>
-    <style type='text/css'>
-      .background {
-        fill: url(#GRADIENT);
-      }
-    </style>
     <linearGradient
       id='GRADIENT'
       gradientUnits='userSpaceOnUse'
@@ -28,7 +23,16 @@
     </linearGradient>
   </defs>
   <path
-    class='background'
+    style={{
+      fill: 'url(#GRADIENT)',
+      fillOpacity: 0,
+      stroke: '#cbcbcb',
+      strokeWidth: 6,
+      strokeOpacity: 1,
+      strokeDasharray: 1000,
+      strokeDashoffset: 1300
+    }}
+    class='animate-logo-draw'
     d='M347.29,717.28H229.22L332.4,448.35L627.05,154.1l-141-141H154.98L13.95,154.12l135.69,134.84l11.04,11.3
 	l136.77-133.36h115.46L310.42,434.06L13.98,730.1l141.8,141.8h331.09l140.15-141.02L480.76,584.62L347.29,717.28z M367.87,732.97
 	l112.85-112.15l110.1,110.1L481.29,841.14L367.87,732.97z M191.93,742.92l-35.73,93.14l-93.14-93.14H191.93z M179.73,846.26
