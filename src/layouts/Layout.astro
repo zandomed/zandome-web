@@ -1,13 +1,17 @@
 ---
-import '@fontsource/poppins';
 import '@/styles/global.css';
 
 import { version } from '@package';
 
-import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
+import Analytics from '@/components/Analytics.astro';
+import CookieConsent from '@/components/CookieConsent.astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+
 interface Props {
   title: string;
 }
+
+const COPYRIGHT_YEAR = new Date().getFullYear();
 
 const { title } = Astro.props;
 
@@ -47,26 +51,36 @@ const description =
 <html lang='en'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
     <meta name='generator' content={Astro.generator} />
+
+    <!-- Theme -->
+    <meta name="theme-name" content="zandome" />
+    <meta name="msapplication-TileColor" content="hsl(195, 20%, 10%)" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="hsl(195, 20%, 10%)"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="hsl(195, 20%, 10%)"
+    />
 
     <!-- HTML Meta Tags -->
     <title>{title}</title>
     <meta name='version' content={version} />
     <meta name='description' content={description} />
     <meta name='robots' content='index, follow' />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta
       name='keywords'
       content='Software, Developer, Javascript, Typescript, Full Stack, Frontend, Backend'
     />
     <meta name='author' content='Miguel Mendoza' />
-    <meta name='copyright' content='Miguel Mendoza' />
-    <link
-      rel='alternate'
-      href='https://rockcontent.com/'
-      hreflang='x-default'
-    />
+    <meta name="copyright" content={`©${COPYRIGHT_YEAR} Miguel Mendoza`}>
     <link rel='canonical' href='http://zandome.com' />
 
     <!-- Facebook Meta Tags -->
@@ -84,10 +98,12 @@ const description =
     <meta name='twitter:description' content={description} />
     <meta name='twitter:image' content='/zandome-og-bg.png' />
 
-    <GoogleAnalytics />
+    <Analytics />
+    <!-- <SpeedInsights/> -->
   </head>
-  <body class="dark">
+  <body>
     <main class='h-full'>
+      <CookieConsent/>
       <slot />
     </main>
   </body>

@@ -1,14 +1,17 @@
 {
   "extends": "astro/tsconfigs/base",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "types": ["bun-types"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@package": ["./package.json"]
+      "@/*": ["src/*"],
+      "@package": ["package.json"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "strict": true
+    "strict": true,
+    "verbatimModuleSyntax": true
   }
 }

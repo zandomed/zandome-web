@@ -3,11 +3,21 @@
   "vcs": {
     "enabled": false,
     "clientKind": "git",
-    "useIgnoreFile": true
+    "useIgnoreFile": false
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": []
+    "ignore": [
+      "**/node_modules",
+      "**/dist",
+      "**/out",
+      "**/build",
+      "**/.astro",
+      "**/.output",
+      "**/.vercel",
+      "**/coverage",
+      "**/public"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -27,9 +37,16 @@
       "quoteStyle": "single"
     }
   },
+  "json": {
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "indentWidth": 2
+    }
+  },
   "overrides": [
     {
-      "include": ["*.astro"],
+      "include": ["*.svelte", "*.astro", "*.vue"],
       "linter": {
         "rules": {
           "style": {
