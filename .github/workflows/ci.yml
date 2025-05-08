@@ -21,7 +21,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4.2.2
       - name: Setup Bun environment
-        uses: oven-sh/setup-bun@v2.0.1
+        uses: oven-sh/setup-bun@v2.0.2
         with:
           bun-version: 1.2.10
       - name: Install dependencies
@@ -42,7 +42,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4.2.2
       - name: Setup Bun environment
-        uses: oven-sh/setup-bun@v2.0.1
+        uses: oven-sh/setup-bun@v2.0.2
         with:
           bun-version: 1.2.10
       - name: Install dependencies
