@@ -4,29 +4,27 @@ import ZandomeLogo from '@/components/ZandomeLogo.astro';
 import Layout from '@/layouts/Base.astro';
 ---
 
-<Layout title='Miguel Mendoza | Zandome'>
-  <div class='flex h-full w-full flex-col items-center justify-center'>
-    <div class='mb-6 max-w-[200px]'>
+<Layout title="Miguel Mendoza | Zandome">
+  <div class="flex h-full w-full flex-col items-center justify-center">
+    <div class="mb-6 max-w-[200px]">
       <ZandomeLogo />
     </div>
     <div
-      class='pointer-events-none mb-8 flex animate-text-loading-fade select-none flex-col items-center'
+      class="pointer-events-none mb-8 flex animate-text-loading-fade flex-col items-center select-none"
     >
-      <h1 class='mb-2 text-6xl'>Zandome</h1>
-      <div class='text-slate-400'>
-        <span class='text-[20px] font-bold'>
+      <h1 class="mb-2 text-6xl">Zandome</h1>
+      <div class="text-slate-400">
+        <span class="text-[20px] font-bold">
           Coming Soon
-          <span class='mx-[2px] animate-text-loading-dot-pulse text-[25px]'>
-            .</span
-          >
+          <span class="mx-[2px] animate-text-loading-dot-pulse text-[25px]"> .</span>
           <span
-            class='mx-[2px] animate-text-loading-dot-pulse text-[25px]'
+            class="mx-[2px] animate-text-loading-dot-pulse text-[25px]"
             style={{ animationDelay: '0.2s' }}
           >
             .
           </span>
           <span
-            class='mx-[2px] animate-text-loading-dot-pulse text-[25px]'
+            class="mx-[2px] animate-text-loading-dot-pulse text-[25px]"
             style={{ animationDelay: '0.4s' }}
           >
             .
@@ -34,7 +32,7 @@ import Layout from '@/layouts/Base.astro';
         </span>
       </div>
     </div>
-    <div class='animate-text-loading-fade'>
+    <div class="animate-text-loading-fade">
       <ContactWays />
     </div>
   </div>

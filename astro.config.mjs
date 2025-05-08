@@ -1,20 +1,22 @@
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
-
-import vercel from '@astrojs/vercel';
-
-import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://zandome.com',
-  integrations: [partytown({
-    config: {
-      forward: ['dataLayer.push'],
-    },
-  }), react(), sitemap()],
+  integrations: [
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+      },
+    }),
+    react(),
+    sitemap(),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
