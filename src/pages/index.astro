@@ -1,11 +1,27 @@
 ---
-import ContactWays from '@/components/ContactWays.astro';
-import ZandomeLogo from '@/components/ZandomeLogo.astro';
+import Button from '@/components/Button';
 import Layout from '@/layouts/Base.astro';
 ---
 
 <Layout title="Miguel Mendoza | Zandome">
-  <div class="flex h-full w-full flex-col items-center justify-center">
+  <div class="container mx-auto h-[1000px]">
+    <div class="flex h-dvh w-full flex-row">
+      <div class="flex flex-1 flex-col items-baseline justify-center">
+        <h1 class="text-title">Crafting Innovative Software Solutions for Tomorrow</h1>
+        <p class="mt-6">
+          I am a passionate software developer with a knack for creating efficient and scalable
+          applications. My journey in technology is driven by a commitment to continuous learning
+          and a desire to solve real-world problems.
+        </p>
+        <div class="mt-8 flex flex-row gap-x-4">
+          <Button>Learn More</Button>
+          <Button>Contact</Button>
+        </div>
+      </div>
+      <div class="flex flex-1"></div>
+    </div>
+  </div>
+  <!-- <div class="flex h-full w-full flex-col items-center justify-center">
     <div class="mb-6 max-w-[200px]">
       <ZandomeLogo />
     </div>
@@ -33,7 +49,6 @@ import Layout from '@/layouts/Base.astro';
       </div>
     </div>
     <div class="animate-text-loading-fade">
-      <ContactWays />
     </div>
-  </div>
+  </div> -->
 </Layout>

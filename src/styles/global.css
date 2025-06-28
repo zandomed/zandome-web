@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import 'tailwindcss';
 
 /* Enable Dark Mode */
@@ -6,9 +7,43 @@
 
 /* Configuration Theme */
 @theme {
-  --color-background: hsl(195, 20%, 10%);
+  /* Bahama Blue (Primary) */
+  --color-bahama-blue-lightest: #e5f0f3;
+  --color-bahama-blue-lighter: #cce1e8;
+  --color-bahama-blue-light: #4e98b0;
+  --color-bahama-blue: #036c8f;
+  --color-bahama-blue-dark: #025672;
+  --color-bahama-blue-darker: #012b39;
+  --color-bahama-blue-darkest: #00202a;
+
+  /* Bondi Blue (Secondary) */
+  --color-bondi-blue-lightest: #ccecef;
+  --color-bondi-blue-lighter: #e5f5f7;
+  --color-bondi-blue-light: #4cbcc7;
+  --color-bondi-blue: #00a0af;
+  --color-bondi-blue-dark: #00808c;
+  --color-bondi-blue-darker: #004046;
+  --color-bondi-blue-darkest: #003034;
+
+  /* Java Blue (Ternary) */
+  --color-java-blue-lightest: #e8f9fa;
+  --color-java-blue-lighter: #d1f4f6;
+  --color-java-blue-light: #60d9e0;
+  --color-java-blue: #1dcad3;
+  --color-java-blue-dark: #17a1a8;
+  --color-java-blue-darker: #0b5054;
+  --color-java-blue-darkest: #083c3f;
+
+  --color-background: var(--color-bahama-blue-darkest);
+
+  --text-title: 3.5rem;
+  --text-title--line-height: 120%;
+  --text-title--letter-spacing: -1%;
+
   --font-sans: 'Poppins', sans-serif;
-  --animate-logo-draw: logo-draw-stroke 3.5s linear 700ms both, logo-fill 3s ease-out 2.5s both;
+  --animate-logo-draw:
+    logo-draw-stroke 3.5s linear 700ms both, logo-fill 3s ease-out 2.5s both,
+    logo-negative 3.5s linear 700ms both;
   --animate-text-loading-fade: text-loading-fade 2s ease 700ms both;
   --animate-text-loading-dot-pulse: text-loading-dot-pulse 1.4s ease-in-out infinite both;
 }
@@ -46,13 +81,18 @@
 
   *::-webkit-scrollbar,
   *::-webkit-scrollbar-thumb {
-    width: 18px;
-    border-radius: 20px;
-    border: 5px solid transparent;
+    width: 15px;
+    border-radius: 10px;
+    border: 4px solid transparent;
+  }
+
+  *::-webkit-scrollbar {
+    background-color: transparent;
+    background-clip: padding-box !important;
   }
 
   *::-webkit-scrollbar-thumb {
-    background: #999;
+    background: var(--color-bahama-blue-light);
     background-clip: padding-box !important;
   }
 
@@ -91,6 +131,16 @@
     fill-opacity: 1;
     stroke-opacity: 0;
     stroke-width: 1px;
+  }
+}
+
+@keyframes logo-negative {
+  0% {
+    filter: invert(0);
+  }
+
+  100% {
+    filter: invert(1);
   }
 }
 

@@ -4,6 +4,7 @@ import '@/styles/global.css';
 import SpeedInsights from '@vercel/speed-insights/astro';
 
 import Analytics from '@/components/Analytics.astro';
+import Header from '@/components/Header.astro';
 import { version } from '@/package';
 
 type Props = {
@@ -14,7 +15,7 @@ const COPYRIGHT_YEAR = new Date().getFullYear();
 const AUTHOR = 'Miguel Mendoza';
 const DESCRIPTION =
   "I'm Miguel Mendoza, Full Stack Developer, here in my Portfolio I will show you my projects, strengths, skills and how to get in touch with me.";
-const THEME_COLOR = 'hsl(195, 20%, 10%)';
+const THEME_COLOR = '#00202a';
 
 const { title } = Astro.props;
 ---
@@ -72,9 +73,11 @@ const { title } = Astro.props;
     <Analytics />
     <SpeedInsights />
   </head>
-  <body>
-    <main class="h-full">
+  <body class="">
+    <Header />
+    <main class="">
       <slot />
     </main>
+    <footer class="">hola</footer>
   </body>
 </html>
