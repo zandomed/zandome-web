@@ -41,9 +41,7 @@
   --text-title--letter-spacing: -1%;
 
   --font-sans: 'Poppins', sans-serif;
-  --animate-logo-draw:
-    logo-draw-stroke 3.5s linear 700ms both, logo-fill 3s ease-out 2.5s both,
-    logo-negative 3.5s linear 700ms both;
+  --animate-logo-draw: logo-draw-stroke 3.5s linear 700ms both, logo-fill 3s ease-out 2.5s both;
   --animate-text-loading-fade: text-loading-fade 2s ease 700ms both;
   --animate-text-loading-dot-pulse: text-loading-dot-pulse 1.4s ease-in-out infinite both;
 }
@@ -131,16 +129,6 @@
     fill-opacity: 1;
     stroke-opacity: 0;
     stroke-width: 1px;
-  }
-}
-
-@keyframes logo-negative {
-  0% {
-    filter: invert(0);
-  }
-
-  100% {
-    filter: invert(1);
   }
 }
 
