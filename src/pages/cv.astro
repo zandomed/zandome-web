@@ -1,0 +1,217 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Picture } from 'astro:assets';
+
+import Jobs from '@/assets/database/jobs.json';
+import PictureProfile from '@/assets/images/profile-picture.png';
+import Layout from '@/layouts/CV.astro';
+
+const LINKEDIN_USERNAME = 'zandome';
+const WEBSITE_DOMAIN = 'zandome.dev';
+const WEBSITE_URL = `https://${WEBSITE_DOMAIN}`;
+const LINKEDIN_URL = `https://www.linkedin.com/in/${LINKEDIN_USERNAME}/`;
+const EMAIL = `miguel@${WEBSITE_DOMAIN}`;
+
+const EMAIL_URL = `mailto:${EMAIL}`;
+const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat()));
+---
+
+<Layout>
+  <div class="flex gap-x-6">
+    <div class="max-w-[25%] flex-1/4">
+      <picture>
+        <Picture
+          formats={['webp', 'jpeg']}
+          format="webp"
+          src={PictureProfile}
+          alt="Profile"
+          fetchpriority="high"
+          class="aspect-square w-full rounded-full object-cover not-print:border-2 not-print:border-white"
+        />
+      </picture>
+      <section aria-describedby="Contact">
+        <h3 class="mt-6 text-2xl font-semibold" id="Contact">Contact</h3>
+        <ul class="mt-2 list-none pl-0">
+          <li class="flex items-center gap-x-2 not-print:hidden">
+            <i>
+              <Icon name="mdi:alternate-email" size={20} class="print:text-black" />
+            </i>
+            <a href={EMAIL_URL}>
+              <span class="hover:underline">
+                {EMAIL}
+              </span>
+            </a>
+          </li>
+          <li class="flex items-center gap-x-2">
+            <i>
+              <Icon name="mdi:linkedin" size={20} />
+            </i>
+            <a href={LINKEDIN_URL}>
+              <span class="hover:underline print:hidden">{LINKEDIN_USERNAME}</span>
+              <span class="hidden print:block">{LINKEDIN_URL}</span>
+            </a>
+          </li>
+          <li class="flex items-center gap-x-2 not-print:hidden">
+            <i>
+              <Icon name="mdi:web" size={20} />
+            </i>
+            <a href={WEBSITE_URL}>
+              <span class="hover:font-bold">{WEBSITE_DOMAIN}</span>
+            </a>
+          </li>
+          <li class="flex items-center gap-x-2">
+            <i>
+              <Icon name="mdi:map-marker" size={20} />
+            </i>
+            <span>Madrid, Spain</span>
+          </li>
+        </ul>
+      </section>
+      <section aria-describedby="Languages">
+        <h3 class="mt-6 text-2xl font-semibold" id="Languages">Languages</h3>
+        <ul class="mt-2 list-disc pl-5">
+          <li class="print:text-black">English (B2)</li>
+          <li>Spanish (Native)</li>
+        </ul>
+      </section>
+      <section aria-describedby="Skills">
+        <h3 class="mt-6 text-2xl font-semibold" id="Skills">Skills</h3>
+        <div>
+          {
+            SKILLS.map((skill) => (
+              <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm">
+                {skill}
+              </span>
+            ))
+          }
+        </div>
+        <!-- <ul class="mt-2 list-disc pl-5">
+          <li>JavaScript, TypeScript</li>
+          <li>React, Node.js, Express</li>
+          <li>Python, Django</li>
+          <li>MongoDB, PostgreSQL</li>
+          <li>HTML, CSS, Tailwind CSS</li>
+        </ul> -->
+      </section>
+    </div>
+    <div class="flex-3/4">
+      <header>
+        <h2 class="text-3xl font-bold">Miguel Mendoza</h2>
+        <p class="text-lg text-gray-600">Software Engineer</p>
+        <p class="mt-2 text-gray-500">
+          I'm a super curious, committed, responsible and always willing to learn something new,
+          offering the best of me.
+        </p>
+      </header>
+      <section aria-describedby="Experience">
+        <h3 class="mt-6 text-2xl font-semibold" id="Experience">Experience</h3>
+        <ul class="mt-2 list-disc pl-5">
+          {
+            Jobs.map((job) => {
+              const startDate = new Date(job.startDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+              });
+              const endDate = job.endDate
+                ? new Date(job.endDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                  })
+                : 'Present';
+
+              const placeWork = job.isRemote ? 'Remote' : 'On-site';
+              return (
+                <li class="py-2">
+                  <div class="flex items-center justify-between gap-x-2">
+                    <div class="flex flex-col">
+                      <h6 class="font-bold">
+                        {job.position}
+                        <br />
+                        <span class="text-gray-500">at</span>{' '}
+                        <span
+                          class:list={{
+                            'not-print:underline': !!job.url,
+                          }}
+                        >
+                          <a href={job.url}>{job.company}</a>
+                        </span>
+                      </h6>
+                      <span>
+                        {job.location ? job.location : ''}
+                        <span class="text-gray-500">({placeWork})</span>
+                      </span>
+                    </div>
+
+                    <span class="text-nowrap">
+                      {startDate} - {endDate}
+                    </span>
+                  </div>
+                  <p class="text-gray-600">
+                    {/* <ReadMore
+                      client:load
+                      id={`description-${job.company}`}
+                      paragraphs={job.description}
+                    /> */}
+                    {job.description}
+                  </p>
+                  <div class="mt-2">
+                    {job.technologies.map((tech) => (
+                      <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </li>
+              );
+            })
+          }
+
+          <!-- <li>
+            <div class="flex items-center justify-between">
+              <h6 class="font-bold">
+                Senior Frontend Developer <span class="text-gray-600">at</span>
+                <span class="underline">
+                  <a href="https://purplefire.io">PurpleFire</a>
+                </span>
+              </h6>
+              <span>(2020 - Present)</span>
+            </div>
+            <p class="text-gray-600">
+              Worked on backend services and APIs using Python and Django.
+            </p>
+          </li> -->
+        </ul>
+      </section>
+      <section aria-describedby="Studies">
+        <h3 class="mt-6 text-2xl font-semibold" id="Experience">Studies</h3>
+        <ul class="mt-2 list-disc pl-5">
+          <li>
+            <div class="flex items-center justify-between">
+              <h6 class="font-bold">
+                Full Stack Developer <span class="text-gray-600">at</span>
+                <span>XYZ Company</span>
+              </h6>
+
+              <span>(2020 - Present)</span>
+            </div>
+            <p class="text-gray-600">
+              Developed and maintained web applications using React, Node.js, and MongoDB.
+            </p>
+          </li>
+          <li>
+            <div class="flex items-center justify-between">
+              <h6 class="font-bold">
+                Full Stack Developer <span class="text-gray-600">at</span>
+                <span>XYZ Company</span>
+              </h6>
+              <span>(2020 - Present)</span>
+            </div>
+            <p class="text-gray-600">
+              Worked on backend services and APIs using Python and Django.
+            </p>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</Layout>

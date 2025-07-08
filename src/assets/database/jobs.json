@@ -1,0 +1,68 @@
+[
+  {
+    "company": "Solera Holdings, LLC.",
+    "position": "Software Manager Engineer",
+    "startDate": "2024-10-28T00:00:00+00:00",
+    "endDate": null,
+    "description": "Leading a team of developers to build and maintain software solutions for the automotive industry. Focused on enhancing user experience and optimizing performance across various platforms.",
+    "location": "Madrid, Spain",
+    "url": "https://solera.com",
+    "isRemote": false,
+    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS"]
+  },
+  {
+    "company": "PurpleFire",
+    "position": "Senior Frontend Developer",
+    "startDate": "2024-07-01T00:00:00+00:00",
+    "endDate": "2024-10-01T00:00:00+00:00",
+    "description": "In my current role as a Senior Frontend Developer, I focus on continuous improvement for e-commerce platforms built on Shopify and WordPress. My primary objective is to enhance the conversion rate (CRO) and customer value through targeted optimizations, driving better sales performance for various e-commerce businesses.\nI collaborate closely with marketing and data teams to implement frontend changes that align with user behavior insights and business goals, ensuring that all adjustments result in a seamless and optimized shopping experience.",
+    "location": "Copenhagen, Denmark",
+    "url": "https://purplefire.io",
+    "isRemote": true,
+    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS"]
+  },
+  {
+    "company": "Southern Code",
+    "position": "Senior Frontend Developer",
+    "startDate": "2021-12-01T00:00:00+00:00",
+    "endDate": "2024-07-01T00:00:00+00:00",
+    "description": "At Southern Code, I contributed to various projects across multiple industries, including finance, real-time location and security, real estate, and cryptocurrency. In each project, I served as a Senior Frontend Developer, working on both web and mobile platforms. I played a pivotal role in implementing new features and making critical decisions that influenced the project’s success and the overall development process.\nMy role consistently placed me on the front lines, where I collaborated closely with teams to design and develop responsive and efficient user interfaces. Additionally, I took an active part in the strategic planning and decision-making for each project, ensuring the best technologies and practices were utilized to meet business needs.",
+    "location": "Cordoba, Argentina",
+    "url": "https://southerncode.us",
+    "isRemote": true,
+    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS"]
+  },
+  {
+    "company": "IbisDev",
+    "position": "Cross Platform Developer",
+    "startDate": "2021-10-01T00:00:00+00:00",
+    "endDate": "2022-01-01T00:00:00+00:00",
+    "description": "In my current role as a Senior Frontend Developer, I focus on ",
+    "location": "Paris, France",
+    "url": "https://www.ibisdev.tech/",
+    "isRemote": true,
+    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS"]
+  },
+  {
+    "company": "BrickControl",
+    "position": "Senior Frontend Developer",
+    "startDate": "2020-01-01T00:00:00+00:00",
+    "endDate": "2021-12-01T00:00:00+00:00",
+    "description": "In my current role as a Senior Frontend Developer, I focus on ",
+    "location": "Madrid, Spain",
+    "url": "https://www.brickcontrol.com/es/",
+    "isRemote": true,
+    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS"]
+  },
+  {
+    "company": "Qubithat",
+    "position": "Software Developer",
+    "startDate": "2020-06-01T00:00:00+00:00",
+    "endDate": "2020-07-01T00:00:00+00:00",
+    "description": "In my current role as a Senior Frontend Developer, I focus on ",
+    "location": "Bogota, Colombia",
+    "url": null,
+    "isRemote": true,
+    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS"]
+  }
+]

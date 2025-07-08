@@ -4,27 +4,21 @@ import '@/styles/global.css';
 import SpeedInsights from '@vercel/speed-insights/astro';
 
 import Analytics from '@/components/Analytics.astro';
-import Footer from '@/components/Footer.astro';
+import Button from '@/components/Button.astro';
 import Header from '@/components/Header.astro';
 import { version } from '@/package';
-
-type Props = {
-  title: string;
-};
 
 const COPYRIGHT_YEAR = new Date().getFullYear();
 const AUTHOR = 'Miguel Mendoza';
 const DESCRIPTION =
   "I'm Miguel Mendoza, Full Stack Developer, here in my Portfolio I will show you my projects, strengths, skills and how to get in touch with me.";
 const THEME_COLOR = '#00202a';
-
-const { title } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <!-- General -->
-    <title>{title}</title>
+    <title>Miguel Mendoza Curriculum</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="generator" content={Astro.generator} />
@@ -69,11 +63,17 @@ const { title } = Astro.props;
     <Analytics />
     <SpeedInsights />
   </head>
-  <body class="">
-    <Header />
-    <main class="">
+  <body class="relative h-full w-full bg-background print:bg-white print:text-black">
+    <div class="print:hidden">
+      <Header />
+    </div>
+    <main class="mx-auto h-full max-w-4xl p-10 not-print:pt-25">
       <slot />
     </main>
-    <Footer />
+    <div class="fixed right-5 bottom-5 print:hidden">
+      <Button id="btn:download:cv" download="miguel-mendoza-cv.pdf" href="/cv.pdf">
+        Donwload CV
+      </Button>
+    </div>
   </body>
 </html>

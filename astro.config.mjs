@@ -5,6 +5,8 @@ import vercel from '@astrojs/vercel';
 import playformCompress from '@playform/compress';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
+import icon from 'astro-icon';
+import pdf from 'astro-pdf';
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,6 +20,12 @@ export default defineConfig({
     react(),
     sitemap(),
     playformCompress(),
+    icon(),
+    pdf({
+      pages: {
+        '/cv': 'cv.pdf',
+      },
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],
@@ -29,4 +37,10 @@ export default defineConfig({
     },
     maxDuration: 8,
   }),
+  redirects: {
+    '/curriculum': {
+      status: 302,
+      destination: '/cv',
+    },
+  },
 });

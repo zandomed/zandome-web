@@ -1,10 +1,10 @@
 ---
-import Button from '@/components/Button';
+import Button from '@/components/Button.astro';
 import Layout from '@/layouts/Base.astro';
 ---
 
 <Layout title="Miguel Mendoza | Zandome">
-  <div class="container mx-auto h-[1000px]">
+  <div class="container mx-auto h-dvh">
     <div class="flex h-dvh w-full flex-row">
       <div class="flex flex-1 flex-col items-baseline justify-center">
         <h1 class="text-title">Crafting Innovative Software Solutions for Tomorrow</h1>
@@ -14,8 +14,8 @@ import Layout from '@/layouts/Base.astro';
           and a desire to solve real-world problems.
         </p>
         <div class="mt-8 flex flex-row gap-x-4">
-          <Button>Learn More</Button>
-          <Button>Contact</Button>
+          <Button href="/cv">Know more about me</Button>
+          <!-- <Button>Contact</Button> -->
         </div>
       </div>
       <div class="flex flex-1"></div>
