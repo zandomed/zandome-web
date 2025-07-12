@@ -8,6 +8,8 @@ import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import pdf from 'astro-pdf';
 
+const PDF_MARGIN = 40;
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://zandome.com',
@@ -23,7 +25,17 @@ export default defineConfig({
     icon(),
     pdf({
       pages: {
-        '/cv': 'cv.pdf',
+        '/cv': {
+          path: 'cv.pdf',
+          pdf: {
+            margin: {
+              top: PDF_MARGIN,
+              bottom: PDF_MARGIN,
+              left: PDF_MARGIN,
+              right: PDF_MARGIN,
+            },
+          },
+        },
       },
     }),
   ],

@@ -4,31 +4,111 @@ import { Picture } from 'astro:assets';
 
 import Jobs from '@/assets/database/jobs.json';
 import PictureProfile from '@/assets/images/profile-picture.png';
+import ExperienceCard from '@/components/ExperienceCard.astro';
 import Layout from '@/layouts/CV.astro';
 
 const LINKEDIN_USERNAME = 'zandome';
 const WEBSITE_DOMAIN = 'zandome.dev';
-const WEBSITE_URL = `https://${WEBSITE_DOMAIN}`;
-const LINKEDIN_URL = `https://www.linkedin.com/in/${LINKEDIN_USERNAME}/`;
+const LINKEDIN_URL = `https://www.linkedin.com/in/${LINKEDIN_USERNAME}`;
 const EMAIL = `miguel@${WEBSITE_DOMAIN}`;
+const PHONE_NUMBER = import.meta.env.PHONE_NUMBER;
+const PHONE_NUMBER_URL = `tel:${PHONE_NUMBER}`;
 
 const EMAIL_URL = `mailto:${EMAIL}`;
-const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat()));
+const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat())).sort();
 ---
 
 <Layout>
-  <div class="flex gap-x-6">
+  <div class="flex flex-col gap-y-10 print:gap-y-4">
+    <!-- Profile Picture -->
+    <section class="flex flex-col items-center justify-center gap-y-2">
+      <Picture
+        formats={['webp', 'jpeg']}
+        format="webp"
+        src={PictureProfile}
+        alt="Profile"
+        loading="eager"
+        fetchpriority="high"
+        transition:name="profile"
+        class="aspect-square w-30 rounded-full object-cover not-print:border-2 not-print:border-white print:w-20"
+      />
+      <div class="flex flex-col items-center justify-center">
+        <h1 class="text-2xl font-bold">Miguel Mendoza</h1>
+        <h2 class="text-lg text-gray-600">Software Engineer</h2>
+      </div>
+      <div aria-label="Contact" class="cv__contact">
+        <a href={EMAIL_URL} class="cv__contact__item hover:underline">
+          <Icon name="mdi:email" size={16} />
+          <span>
+            {EMAIL}
+          </span>
+        </a>
+        <a href={LINKEDIN_URL} class="cv__contact__item hover:underline">
+          <Icon name="mdi:linkedin" size={16} />
+          <span>{LINKEDIN_URL}</span>
+        </a>
+        <a href={PHONE_NUMBER_URL} class="cv__contact__item hover:underline">
+          <Icon name="mdi:phone" size={16} />
+          <span>{PHONE_NUMBER}</span>
+        </a>
+        <div class="cv__contact__item">
+          <Icon name="mdi:map-marker" size={16} />
+          <span>Madrid, Spain</span>
+        </div>
+      </div>
+    </section>
+    <section class="cv__section" aria-label="Summary">
+      <header class="flex items-center gap-x-4">
+        <h3 class="cv__section__title">Summary</h3>
+        <div class="h-[1px] w-full bg-gray-400"></div>
+      </header>
+      <p class="print:text-sm">
+        Self-taught software developer with over 6 years of experience building and leading web and
+        mobile solutions in corporate environments. Proven track record in delivering scalable
+        systems, improving development processes, and aligning technical execution with business
+        goals. Currently serving as Software Engineering Manager at Solera. Skilled in JavaScript,
+        Node.js, React, Angular, Next.js, Flutter, Swift and Java. Strong leadership, product
+        thinking, and agile delivery mindset.
+      </p>
+    </section>
+    <section class="cv__section" aria-label="Skills">
+      <header class="flex items-center gap-x-4">
+        <h3 class="cv__section__title">Skills</h3>
+        <div class="h-[1px] w-full bg-gray-400"></div>
+      </header>
+      <div>
+        {
+          SKILLS.map((skill) => (
+            <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm">
+              {skill}
+            </span>
+          ))
+        }
+      </div>
+    </section>
+    <section class="cv__section" aria-label="Experience">
+      <header class="flex items-center gap-x-4">
+        <h3 class="cv__section__title">Experience</h3>
+        <div class="h-[1px] w-full bg-gray-400"></div>
+      </header>
+      <div class="flex flex-col gap-y-4">
+        {Jobs.map((job) => <ExperienceCard {...job} />)}
+      </div>
+    </section>
+    <section class="cv__section" aria-label="Languages">
+      <header class="flex items-center gap-x-4">
+        <h3 class="cv__section__title">Languages</h3>
+        <div class="h-[1px] w-full bg-gray-400"></div>
+      </header>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae sequi pariatur eveniet odit
+        fuga asperiores, maxime illum libero possimus sunt corporis facere quia quo consequuntur.
+        Optio distinctio sequi sunt voluptatibus?
+      </p>
+    </section>
+  </div>
+  <!-- <div class="flex gap-x-6">
     <div class="max-w-[25%] flex-1/4">
-      <picture>
-        <Picture
-          formats={['webp', 'jpeg']}
-          format="webp"
-          src={PictureProfile}
-          alt="Profile"
-          fetchpriority="high"
-          class="aspect-square w-full rounded-full object-cover not-print:border-2 not-print:border-white"
-        />
-      </picture>
       <section aria-describedby="Contact">
         <h3 class="mt-6 text-2xl font-semibold" id="Contact">Contact</h3>
         <ul class="mt-2 list-none pl-0">
@@ -85,13 +165,6 @@ const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat()));
             ))
           }
         </div>
-        <!-- <ul class="mt-2 list-disc pl-5">
-          <li>JavaScript, TypeScript</li>
-          <li>React, Node.js, Express</li>
-          <li>Python, Django</li>
-          <li>MongoDB, PostgreSQL</li>
-          <li>HTML, CSS, Tailwind CSS</li>
-        </ul> -->
       </section>
     </div>
     <div class="flex-3/4">
@@ -124,18 +197,21 @@ const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat()));
                 <li class="py-2">
                   <div class="flex items-center justify-between gap-x-2">
                     <div class="flex flex-col">
-                      <h6 class="font-bold">
+                      <h6 class="text-lg font-bold">
                         {job.position}
                         <br />
-                        <span class="text-gray-500">at</span>{' '}
-                        <span
-                          class:list={{
-                            'not-print:underline': !!job.url,
-                          }}
-                        >
-                          <a href={job.url}>{job.company}</a>
-                        </span>
                       </h6>
+                      <a
+                        class="flex items-center gap-x-1"
+                        class:list={{
+                          'not-print:hover:underline': !!job.url,
+                        }}
+                        href={job.url}
+                      >
+                        <span>{job.company}</span>
+                        <Icon name="mdi:open-in-new" size={14} class="text-gray-500" />
+                      </a>
+
                       <span>
                         {job.location ? job.location : ''}
                         <span class="text-gray-500">({placeWork})</span>
@@ -147,15 +223,10 @@ const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat()));
                     </span>
                   </div>
                   <p class="text-gray-600">
-                    {/* <ReadMore
-                      client:load
-                      id={`description-${job.company}`}
-                      paragraphs={job.description}
-                    /> */}
                     {job.description}
                   </p>
                   <div class="mt-2">
-                    {job.technologies.map((tech) => (
+                    {job.technologies.sort().map((tech) => (
                       <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm">
                         {tech}
                       </span>
@@ -165,21 +236,6 @@ const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat()));
               );
             })
           }
-
-          <!-- <li>
-            <div class="flex items-center justify-between">
-              <h6 class="font-bold">
-                Senior Frontend Developer <span class="text-gray-600">at</span>
-                <span class="underline">
-                  <a href="https://purplefire.io">PurpleFire</a>
-                </span>
-              </h6>
-              <span>(2020 - Present)</span>
-            </div>
-            <p class="text-gray-600">
-              Worked on backend services and APIs using Python and Django.
-            </p>
-          </li> -->
         </ul>
       </section>
       <section aria-describedby="Studies">
@@ -213,5 +269,5 @@ const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat()));
         </ul>
       </section>
     </div>
-  </div>
+  </div> -->
 </Layout>

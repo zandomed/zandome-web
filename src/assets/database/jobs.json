@@ -8,7 +8,7 @@
     "location": "Madrid, Spain",
     "url": "https://solera.com",
     "isRemote": false,
-    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS"]
+    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS", ".NET"]
   },
   {
     "company": "PurpleFire",
@@ -19,7 +19,7 @@
     "location": "Copenhagen, Denmark",
     "url": "https://purplefire.io",
     "isRemote": true,
-    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS"]
+    "technologies": ["JavaScript", "TypeScript", "React", "Node.js", "GraphQL", "AWS", "Docker"]
   },
   {
     "company": "Southern Code",

@@ -44,6 +44,27 @@
   --animate-logo-draw: logo-draw-stroke 2.5s linear 700ms both, logo-fill 2s ease-out 2s both;
 }
 
+@layer components {
+  .cv__contact {
+    @apply flex items-center;
+
+    .cv__contact__item + .cv__contact__item::before {
+      @apply mx-2 text-gray-500 content-['|'] hover:underline;
+    }
+
+    .cv__contact__item {
+      @apply inline-flex items-center gap-x-1 print:text-xs;
+    }
+  }
+
+  section.cv__section {
+    @apply flex flex-col gap-y-2 print:gap-1;
+    .cv__section__title {
+      @apply text-2xl font-semibold print:text-lg;
+    }
+  }
+}
+
 @layer base {
   html {
     -ms-text-size-adjust: 100%;

@@ -9,7 +9,7 @@ export interface ReadMoreProps {
 export default function ReadMore(props: ReadMoreProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const { paragraphs, id, amountOfWords = 36 } = props;
+  const { paragraphs, amountOfWords = 36, id } = props;
 
   const splittedText = (Array.isArray(paragraphs) ? paragraphs.join(' ') : paragraphs).split(' ');
   const itCanOverflow = splittedText.length > amountOfWords;

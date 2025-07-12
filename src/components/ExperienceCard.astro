@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon/components';
+
+type Props = {
+  company: string;
+  position: string;
+  startDate: string;
+  endDate: null | string;
+  description: string;
+  location: string;
+  url?: string | null;
+  isRemote: boolean;
+  technologies: string[];
+};
+
+const LOCALE: Intl.LocalesArgument = 'en-US';
+const LOCALE_DATE_CONFIG: Intl.DateTimeFormatOptions = {
+  year: 'numeric',
+  month: 'short',
+};
+
+const { startDate, endDate, isRemote, ...job } = Astro.props;
+
+const startDateLocaleString = new Date(startDate).toLocaleDateString(LOCALE, LOCALE_DATE_CONFIG);
+const isCurrentJob = endDate === null;
+const endDateLocaleString = isCurrentJob
+  ? 'Present'
+  : new Date(endDate).toLocaleDateString(LOCALE, LOCALE_DATE_CONFIG);
+
+const placeWork = isRemote ? 'Remote' : 'On-site';
+---
+
+<article>
+  <div class="flex items-center justify-between gap-x-2">
+    <div class="flex flex-col">
+      <h6 class="text-lg font-bold">
+        {job.position}
+        <br />
+      </h6>
+      {
+        job.url ? (
+          <a class="flex items-center gap-x-1 not-print:hover:underline" href={job.url}>
+            <span>{job.company}</span>
+            <Icon name="mdi:open-in-new" size={16} class="text-gray-700 print:hidden" />
+          </a>
+        ) : (
+          <span>{job.company}</span>
+        )
+      }
+
+      <span class="text-bahama-blue-light">
+        {job.location ? job.location : ''}
+        <span class="text-bahama-blue-light print:hidden">({placeWork})</span>
+      </span>
+    </div>
+
+    <span class="text-nowrap">
+      {startDateLocaleString} - {endDateLocaleString}
+    </span>
+  </div>
+  <p class="text-java-blue-lightest">{job.description}</p>
+  <div class="mt-2">
+    {
+      job.technologies
+        .sort()
+        .map((tech) => (
+          <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm">
+            {tech}
+          </span>
+        ))
+    }
+  </div>
+</article>

@@ -1,4 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
+
+import PictureProfile from '@/assets/images/profile-picture.png';
 import Button from '@/components/Button.astro';
 import Layout from '@/layouts/Base.astro';
 ---
@@ -18,7 +21,18 @@ import Layout from '@/layouts/Base.astro';
           <!-- <Button>Contact</Button> -->
         </div>
       </div>
-      <div class="flex flex-1"></div>
+      <div class="flex flex-1 items-center justify-center">
+        <Picture
+          formats={['webp', 'jpeg']}
+          format="webp"
+          src={PictureProfile}
+          alt="Profile"
+          fetchpriority="high"
+          transition:animate="slide"
+          transition:name="profile"
+          class="aspect-square w-30 rounded-full object-cover not-print:border-2 not-print:border-white"
+        />
+      </div>
     </div>
   </div>
   <!-- <div class="flex h-full w-full flex-col items-center justify-center">

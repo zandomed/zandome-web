@@ -3,9 +3,15 @@ import Button from './Button.astro';
 import ZandomeLogo from './ZandomeLogo.astro';
 ---
 
-<header class="fixed w-full border-b-2 border-b-white/30 bg-background">
+<header class="fixed z-50 w-full border-b-2 border-b-white/30 bg-background">
   <div class="container mx-auto flex items-center justify-between py-4">
-    <a href="/" class="h-10 w-14">
+    <a
+      href="/"
+      class="h-10 w-14"
+      transition:name="logo"
+      transition:animate="initial"
+      transition:persist
+    >
       <picture>
         <ZandomeLogo isNegative />
       </picture>
