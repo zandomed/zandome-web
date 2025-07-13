@@ -13,13 +13,11 @@ const LINKEDIN_URL = `https://www.linkedin.com/in/${LINKEDIN_USERNAME}`;
 const EMAIL = `miguel@${WEBSITE_DOMAIN}`;
 const PHONE_NUMBER = import.meta.env.PHONE_NUMBER;
 const PHONE_NUMBER_URL = `tel:${PHONE_NUMBER}`;
-
 const EMAIL_URL = `mailto:${EMAIL}`;
-const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat())).sort();
 ---
 
 <Layout>
-  <div class="flex flex-col gap-y-10 print:gap-y-4">
+  <div class="flex flex-col gap-y-4 print:gap-y-2">
     <!-- Profile Picture -->
     <section class="flex flex-col items-center justify-center gap-y-2">
       <Picture
@@ -33,241 +31,118 @@ const SKILLS = Array.from(new Set(Jobs.map((job) => job.technologies).flat())).s
         class="aspect-square w-30 rounded-full object-cover not-print:border-2 not-print:border-white print:w-20"
       />
       <div class="flex flex-col items-center justify-center">
-        <h1 class="text-2xl font-bold">Miguel Mendoza</h1>
-        <h2 class="text-lg text-gray-600">Software Engineer</h2>
+        <h1 class="text-2xl font-bold print:text-cv-title">Miguel Enrique Mendoza Rivero</h1>
       </div>
       <div aria-label="Contact" class="cv__contact">
         <a href={EMAIL_URL} class="cv__contact__item hover:underline">
-          <Icon name="mdi:email" size={16} />
+          <Icon name="mdi:email" class="text-base print:text-cv-body" />
           <span>
             {EMAIL}
           </span>
         </a>
         <a href={LINKEDIN_URL} class="cv__contact__item hover:underline">
-          <Icon name="mdi:linkedin" size={16} />
+          <Icon name="mdi:linkedin" class="text-base print:text-cv-body" />
           <span>{LINKEDIN_URL}</span>
         </a>
         <a href={PHONE_NUMBER_URL} class="cv__contact__item hover:underline">
-          <Icon name="mdi:phone" size={16} />
+          <Icon name="mdi:phone" class="text-base print:text-cv-body" />
           <span>{PHONE_NUMBER}</span>
         </a>
         <div class="cv__contact__item">
-          <Icon name="mdi:map-marker" size={16} />
+          <Icon name="mdi:map-marker" class="text-base print:text-cv-body" />
           <span>Madrid, Spain</span>
         </div>
       </div>
     </section>
-    <section class="cv__section" aria-label="Summary">
-      <header class="flex items-center gap-x-4">
-        <h3 class="cv__section__title">Summary</h3>
-        <div class="h-[1px] w-full bg-gray-400"></div>
-      </header>
-      <p class="print:text-sm">
-        Self-taught software developer with over 6 years of experience building and leading web and
+    <section class="cv__section border-t-1 border-t-gray-400 pt-2" aria-label="Summary">
+      <p class="print:text-cv-body print:italic">
+        Self-taught software developer with over 7 years of experience building and leading web and
         mobile solutions in corporate environments. Proven track record in delivering scalable
         systems, improving development processes, and aligning technical execution with business
-        goals. Currently serving as Software Engineering Manager at Solera. Skilled in JavaScript,
-        Node.js, React, Angular, Next.js, Flutter, Swift and Java. Strong leadership, product
-        thinking, and agile delivery mindset.
+        goals.
       </p>
     </section>
-    <section class="cv__section" aria-label="Skills">
-      <header class="flex items-center gap-x-4">
-        <h3 class="cv__section__title">Skills</h3>
-        <div class="h-[1px] w-full bg-gray-400"></div>
-      </header>
-      <div>
-        {
-          SKILLS.map((skill) => (
-            <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm">
-              {skill}
-            </span>
-          ))
-        }
-      </div>
-    </section>
     <section class="cv__section" aria-label="Experience">
-      <header class="flex items-center gap-x-4">
+      <header class="flex items-center gap-x-4 border-b-1 border-b-gray-400">
         <h3 class="cv__section__title">Experience</h3>
-        <div class="h-[1px] w-full bg-gray-400"></div>
       </header>
-      <div class="flex flex-col gap-y-4">
+      <div class="flex flex-col gap-y-4 print:gap-y-1">
         {Jobs.map((job) => <ExperienceCard {...job} />)}
       </div>
     </section>
-    <section class="cv__section" aria-label="Languages">
-      <header class="flex items-center gap-x-4">
-        <h3 class="cv__section__title">Languages</h3>
-        <div class="h-[1px] w-full bg-gray-400"></div>
+    <section class="cv__section" aria-label="Education">
+      <header class="flex items-center gap-x-4 border-b-1 border-b-gray-400">
+        <h3 class="cv__section__title">Education</h3>
       </header>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae sequi pariatur eveniet odit
-        fuga asperiores, maxime illum libero possimus sunt corporis facere quia quo consequuntur.
-        Optio distinctio sequi sunt voluptatibus?
-      </p>
+      <ExperienceCard
+        site="U.E. Colegio del Santisimo"
+        grade="High School"
+        endDate="2018-07-18T00:00:00+00:00"
+        onlyShowEndDate
+        location="Barquisimeto, Venezuela"
+      />
+    </section>
+    <section class="cv__section" aria-label="Languages">
+      <header class="flex items-center gap-x-4 border-b-1 border-b-gray-400">
+        <h3 class="cv__section__title">Languages</h3>
+      </header>
+      <ul class="list-disc pl-8 text-base print:text-cv-body">
+        <li>Spanish <span>(native)</span></li>
+        <li>English <span>(B2)</span></li>
+      </ul>
+    </section>
+    <section class="cv__section" aria-label="Skills">
+      <header class="flex items-center gap-x-4 border-b-1 border-b-gray-400">
+        <h3 class="cv__section__title">Additional Skills</h3>
+      </header>
+      <ul class="list-decimal pl-8 text-base print:text-cv-body">
+        <li>
+          <span class="text-lg font-bold print:text-cv-subtitle"> Technical Leadership </span>
+          <p class="text-base print:text-cv-body">
+            Proven ability to guide development teams, enforce coding standards, and contribute to
+            scalable architectural decisions.
+          </p>
+        </li>
+        <li>
+          <span class="text-lg font-bold print:text-cv-subtitle"
+            >Problem Solving & Critical Thinking</span
+          >
+          <p class="text-base print:text-cv-body">
+            Skilled at analyzing complex technical and business challenges and implementing
+            effective, efficient solutions.
+          </p>
+        </li>
+        <li>
+          <span class="text-lg font-bold print:text-cv-subtitle">Self-Driven Learning</span>
+          <p class="text-base print:text-cv-body">
+            Fully self-taught developer with a strong commitment to continuous learning and
+            mastering new technologies independently.
+          </p>
+        </li>
+        <li>
+          <span class="text-lg font-bold print:text-cv-subtitle"
+            >Cross-Functional Collaboration</span
+          >
+          <p class="text-base print:text-cv-body">
+            Experience working closely with product, marketing, and data teams to align technical
+            solutions with business and user needs.
+          </p>
+        </li>
+        <li>
+          <span class="text-lg font-bold print:text-cv-subtitle">Product-Oriented Mindset</span>
+          <p class="text-base print:text-cv-body">
+            Focused on delivering real value by prioritizing usability, performance, and business
+            outcomes in every technical decision.
+          </p>
+        </li>
+        <li>
+          <span class="text-lg font-bold print:text-cv-subtitle">Adaptability</span>
+          <p class="text-base print:text-cv-body">
+            Demonstrated ability to thrive in diverse industries, tech stacks, and multicultural
+            teams, both in startups and large organizations.
+          </p>
+        </li>
+      </ul>
     </section>
   </div>
-  <!-- <div class="flex gap-x-6">
-    <div class="max-w-[25%] flex-1/4">
-      <section aria-describedby="Contact">
-        <h3 class="mt-6 text-2xl font-semibold" id="Contact">Contact</h3>
-        <ul class="mt-2 list-none pl-0">
-          <li class="flex items-center gap-x-2 not-print:hidden">
-            <i>
-              <Icon name="mdi:alternate-email" size={20} class="print:text-black" />
-            </i>
-            <a href={EMAIL_URL}>
-              <span class="hover:underline">
-                {EMAIL}
-              </span>
-            </a>
-          </li>
-          <li class="flex items-center gap-x-2">
-            <i>
-              <Icon name="mdi:linkedin" size={20} />
-            </i>
-            <a href={LINKEDIN_URL}>
-              <span class="hover:underline print:hidden">{LINKEDIN_USERNAME}</span>
-              <span class="hidden print:block">{LINKEDIN_URL}</span>
-            </a>
-          </li>
-          <li class="flex items-center gap-x-2 not-print:hidden">
-            <i>
-              <Icon name="mdi:web" size={20} />
-            </i>
-            <a href={WEBSITE_URL}>
-              <span class="hover:font-bold">{WEBSITE_DOMAIN}</span>
-            </a>
-          </li>
-          <li class="flex items-center gap-x-2">
-            <i>
-              <Icon name="mdi:map-marker" size={20} />
-            </i>
-            <span>Madrid, Spain</span>
-          </li>
-        </ul>
-      </section>
-      <section aria-describedby="Languages">
-        <h3 class="mt-6 text-2xl font-semibold" id="Languages">Languages</h3>
-        <ul class="mt-2 list-disc pl-5">
-          <li class="print:text-black">English (B2)</li>
-          <li>Spanish (Native)</li>
-        </ul>
-      </section>
-      <section aria-describedby="Skills">
-        <h3 class="mt-6 text-2xl font-semibold" id="Skills">Skills</h3>
-        <div>
-          {
-            SKILLS.map((skill) => (
-              <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm">
-                {skill}
-              </span>
-            ))
-          }
-        </div>
-      </section>
-    </div>
-    <div class="flex-3/4">
-      <header>
-        <h2 class="text-3xl font-bold">Miguel Mendoza</h2>
-        <p class="text-lg text-gray-600">Software Engineer</p>
-        <p class="mt-2 text-gray-500">
-          I'm a super curious, committed, responsible and always willing to learn something new,
-          offering the best of me.
-        </p>
-      </header>
-      <section aria-describedby="Experience">
-        <h3 class="mt-6 text-2xl font-semibold" id="Experience">Experience</h3>
-        <ul class="mt-2 list-disc pl-5">
-          {
-            Jobs.map((job) => {
-              const startDate = new Date(job.startDate).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-              });
-              const endDate = job.endDate
-                ? new Date(job.endDate).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                  })
-                : 'Present';
-
-              const placeWork = job.isRemote ? 'Remote' : 'On-site';
-              return (
-                <li class="py-2">
-                  <div class="flex items-center justify-between gap-x-2">
-                    <div class="flex flex-col">
-                      <h6 class="text-lg font-bold">
-                        {job.position}
-                        <br />
-                      </h6>
-                      <a
-                        class="flex items-center gap-x-1"
-                        class:list={{
-                          'not-print:hover:underline': !!job.url,
-                        }}
-                        href={job.url}
-                      >
-                        <span>{job.company}</span>
-                        <Icon name="mdi:open-in-new" size={14} class="text-gray-500" />
-                      </a>
-
-                      <span>
-                        {job.location ? job.location : ''}
-                        <span class="text-gray-500">({placeWork})</span>
-                      </span>
-                    </div>
-
-                    <span class="text-nowrap">
-                      {startDate} - {endDate}
-                    </span>
-                  </div>
-                  <p class="text-gray-600">
-                    {job.description}
-                  </p>
-                  <div class="mt-2">
-                    {job.technologies.sort().map((tech) => (
-                      <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </li>
-              );
-            })
-          }
-        </ul>
-      </section>
-      <section aria-describedby="Studies">
-        <h3 class="mt-6 text-2xl font-semibold" id="Experience">Studies</h3>
-        <ul class="mt-2 list-disc pl-5">
-          <li>
-            <div class="flex items-center justify-between">
-              <h6 class="font-bold">
-                Full Stack Developer <span class="text-gray-600">at</span>
-                <span>XYZ Company</span>
-              </h6>
-
-              <span>(2020 - Present)</span>
-            </div>
-            <p class="text-gray-600">
-              Developed and maintained web applications using React, Node.js, and MongoDB.
-            </p>
-          </li>
-          <li>
-            <div class="flex items-center justify-between">
-              <h6 class="font-bold">
-                Full Stack Developer <span class="text-gray-600">at</span>
-                <span>XYZ Company</span>
-              </h6>
-              <span>(2020 - Present)</span>
-            </div>
-            <p class="text-gray-600">
-              Worked on backend services and APIs using Python and Django.
-            </p>
-          </li>
-        </ul>
-      </section>
-    </div>
-  </div> -->
 </Layout>

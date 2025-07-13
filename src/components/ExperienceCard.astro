@@ -1,73 +1,102 @@
 ---
-import { Icon } from 'astro-icon/components';
-
 type Props = {
-  company: string;
-  position: string;
-  startDate: string;
-  endDate: null | string;
-  description: string;
+  site: string;
+  grade: string;
+  startDate?: null | string;
+  endDate?: null | string;
+  onlyShowEndDate?: boolean;
+  goals?: string[];
   location: string;
   url?: string | null;
-  isRemote: boolean;
-  technologies: string[];
+  isRemote?: boolean;
+  technologies?: string[];
 };
 
 const LOCALE: Intl.LocalesArgument = 'en-US';
 const LOCALE_DATE_CONFIG: Intl.DateTimeFormatOptions = {
   year: 'numeric',
-  month: 'short',
+  month: 'long',
 };
 
-const { startDate, endDate, isRemote, ...job } = Astro.props;
+const {
+  startDate,
+  endDate,
+  isRemote = false,
+  onlyShowEndDate = false,
+  ...experience
+} = Astro.props;
 
-const startDateLocaleString = new Date(startDate).toLocaleDateString(LOCALE, LOCALE_DATE_CONFIG);
-const isCurrentJob = endDate === null;
-const endDateLocaleString = isCurrentJob
-  ? 'Present'
-  : new Date(endDate).toLocaleDateString(LOCALE, LOCALE_DATE_CONFIG);
+function getStartDate() {
+  if (onlyShowEndDate) {
+    return null;
+  }
 
+  if (!startDate) return null;
+
+  return new Date(startDate).toLocaleDateString(LOCALE, LOCALE_DATE_CONFIG);
+}
+
+function getEndDate() {
+  const isCurrent = endDate === null;
+
+  if (isCurrent) return 'Present';
+
+  if (!endDate) return '';
+  return new Date(endDate).toLocaleDateString(LOCALE, LOCALE_DATE_CONFIG);
+}
+
+const startDateLocaleString = getStartDate();
+const endDateLocaleString = getEndDate();
 const placeWork = isRemote ? 'Remote' : 'On-site';
 ---
 
 <article>
-  <div class="flex items-center justify-between gap-x-2">
+  <header class="flex items-center justify-between gap-x-2">
     <div class="flex flex-col">
-      <h6 class="text-lg font-bold">
-        {job.position}
+      <span class="text-base font-bold print:text-cv-body">{experience.site}</span>
+      <h6 class="text-base print:text-cv-body">
+        {experience.grade}
         <br />
       </h6>
-      {
-        job.url ? (
-          <a class="flex items-center gap-x-1 not-print:hover:underline" href={job.url}>
-            <span>{job.company}</span>
-            <Icon name="mdi:open-in-new" size={16} class="text-gray-700 print:hidden" />
-          </a>
-        ) : (
-          <span>{job.company}</span>
-        )
-      }
-
-      <span class="text-bahama-blue-light">
-        {job.location ? job.location : ''}
-        <span class="text-bahama-blue-light print:hidden">({placeWork})</span>
-      </span>
     </div>
 
-    <span class="text-nowrap">
-      {startDateLocaleString} - {endDateLocaleString}
-    </span>
-  </div>
-  <p class="text-java-blue-lightest">{job.description}</p>
-  <div class="mt-2">
-    {
-      job.technologies
-        .sort()
-        .map((tech) => (
-          <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm">
+    <div class="flex flex-col items-end">
+      <span class="text-base not-print:text-bahama-blue-light print:text-cv-body print:font-bold">
+        {experience.location ? experience.location : ''}
+        <span class="font-bold italic not-print:text-bahama-blue-light print:hidden"
+          >({placeWork})</span
+        >
+      </span>
+      {
+        (startDateLocaleString || endDateLocaleString) && (
+          <span class="text-base text-nowrap print:text-cv-body">
+            {startDateLocaleString}
+            {startDateLocaleString && endDateLocaleString && '-'}
+            {endDateLocaleString}
+          </span>
+        )
+      }
+    </div>
+  </header>
+  <p class="mt-2 text-base not-print:text-java-blue-lightest print:text-cv-body">
+    <ul class="list-disc px-8 text-base print:text-cv-body">
+      {
+        experience.goals &&
+          experience.goals.map((goal) => {
+            return <li>{goal}</li>;
+          })
+      }
+    </ul>
+  </p>
+  {
+    experience.technologies && (
+      <div class="mt-2">
+        {experience.technologies.sort().map((tech) => (
+          <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm print:hidden">
             {tech}
           </span>
-        ))
-    }
-  </div>
+        ))}
+      </div>
+    )
+  }
 </article>
