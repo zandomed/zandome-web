@@ -16,12 +16,9 @@ import { Header, Head, Button, Footer } from '@/components/shared';
       <slot />
     </main>
     <div class="fixed right-5 bottom-5 print:hidden">
-      <Button id="btn:download:cv" href="/cv.pdf" target="_blank"> Download CV </Button>
-      <script is:inline>
-        document.getElementById('btn:download:cv')?.addEventListener('click', () => {
-          window.gtag('event', 'download_cv', {});
-        });
-      </script>
+      <Button id="btn:download:cv" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+        Download CV
+      </Button>
     </div>
     <div class="print:hidden">
       <Footer />
