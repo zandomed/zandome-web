@@ -7,11 +7,11 @@ import 'vanilla-cookieconsent/dist/cookieconsent.css';
 
   import { config } from './CookieConsentConfig';
 
-  // toggle custom black theme
-  // document.body.classList.add('cc--elegant-black');
   run(config);
 </script>
 <script is:inline>
+  // toggle custom black theme
+  document.documentElement.classList.add('cc--darkmode');
   // Restore the `show--consent` class if it was present before the page swap
   document.addEventListener('astro:before-preparation', () => {
     const htmlClassName = window.document.documentElement.className;
@@ -24,3 +24,9 @@ import 'vanilla-cookieconsent/dist/cookieconsent.css';
     event.newDocument.documentElement.className += showConsent;
   });
 </script>
+
+<button
+  type="button"
+  data-cc="show-preferencesModal"
+  class="cursor-pointer text-gray-600 hover:underline">Cookie preferences</button
+>

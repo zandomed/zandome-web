@@ -1,3 +1,4 @@
+import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import playformCompress from '@playform/compress';
@@ -12,6 +13,7 @@ const PDF_MARGIN = 40;
 export default defineConfig({
   site: 'https://zandome.com',
   integrations: [
+    partytown({ config: { forward: ['dataLayer.push', 'gtag'] } }),
     react(),
     sitemap(),
     playformCompress(),

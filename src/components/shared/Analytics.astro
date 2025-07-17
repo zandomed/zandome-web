@@ -1,9 +1,24 @@
+---
+import {
+  SERVICE_AD_PERSONALIZATION,
+  SERVICE_AD_STORAGE,
+  SERVICE_AD_USER_DATA,
+  SERVICE_ANALYTICS_STORAGE,
+  SERVICE_FUNCTIONALITY_STORAGE,
+  SERVICE_PERSONALIZATION_STORAGE,
+  SERVICE_SECURITY_STORAGE,
+} from '../CookieConsent/CookieConsentConfig.ts';
+const GOOGLE_ANALYTICS_ID = import.meta.env.ANALYTICS_GOOGLE_ID;
+---
+
 <script
   is:inline
-  src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.ANALYTICS_GOOGLE_ID}`}
-></script>
-<script>
-  import {
+  type="text/partytown"
+  src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}></script>
+<script
+  is:inline
+  type="text/partytown"
+  define:vars={{
     SERVICE_AD_PERSONALIZATION,
     SERVICE_AD_STORAGE,
     SERVICE_AD_USER_DATA,
@@ -11,28 +26,27 @@
     SERVICE_FUNCTIONALITY_STORAGE,
     SERVICE_PERSONALIZATION_STORAGE,
     SERVICE_SECURITY_STORAGE,
-  } from '../CookieConsent/CookieConsentConfig.ts';
-
+    GOOGLE_ANALYTICS_ID,
+  }}
+>
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag() {
     window.dataLayer.push(arguments);
   };
 
-  document.addEventListener('astro:page-load', () => {
-    window.gtag('js', new Date());
+  window.gtag('js', new Date());
 
-    window.gtag('consent', 'default', {
-      [SERVICE_AD_STORAGE]: 'denied',
-      [SERVICE_AD_USER_DATA]: 'denied',
-      [SERVICE_AD_PERSONALIZATION]: 'denied',
-      [SERVICE_ANALYTICS_STORAGE]: 'denied',
-      [SERVICE_FUNCTIONALITY_STORAGE]: 'denied',
-      [SERVICE_PERSONALIZATION_STORAGE]: 'denied',
-      [SERVICE_SECURITY_STORAGE]: 'denied',
-    });
+  window.gtag('consent', 'default', {
+    [SERVICE_AD_STORAGE]: 'denied',
+    [SERVICE_AD_USER_DATA]: 'denied',
+    [SERVICE_AD_PERSONALIZATION]: 'denied',
+    [SERVICE_ANALYTICS_STORAGE]: 'denied',
+    [SERVICE_FUNCTIONALITY_STORAGE]: 'denied',
+    [SERVICE_PERSONALIZATION_STORAGE]: 'denied',
+    [SERVICE_SECURITY_STORAGE]: 'denied',
+  });
 
-    window.gtag('config', import.meta.env.ANALYTICS_GOOGLE_ID, {
-      page_path: window.location.pathname,
-    });
+  window.gtag('config', GOOGLE_ANALYTICS_ID, {
+    page_path: window.location.pathname,
   });
 </script>
