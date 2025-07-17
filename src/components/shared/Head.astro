@@ -2,8 +2,9 @@
 import SpeedInsights from '@vercel/speed-insights/astro';
 import { ClientRouter } from 'astro:transitions';
 
-import Analytics from '@/components/Analytics.astro';
 import { version } from '@/package';
+
+import Analytics from './Analytics.astro';
 
 type Props = {
   title: string;

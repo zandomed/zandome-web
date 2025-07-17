@@ -1,9 +1,7 @@
 ---
 import '@/styles/global.css';
 
-import Button from '@/components/Button.astro';
-import Head from '@/components/Head.astro';
-import Header from '@/components/Header.astro';
+import { Header, Head, Button, Footer } from '@/components/shared';
 ---
 
 <html lang="en" class="print:font-cv">
@@ -14,11 +12,14 @@ import Header from '@/components/Header.astro';
     <div class="print:hidden">
       <Header />
     </div>
-    <main class="mx-auto h-full max-w-4xl not-print:px-5 not-print:pt-25 not-print:lg:px-0">
+    <main class="mx-auto max-w-4xl not-print:px-5 not-print:pt-25 not-print:lg:px-0">
       <slot />
     </main>
     <div class="fixed right-5 bottom-5 print:hidden">
       <Button id="btn:download:cv" href="/cv.pdf" target="_blank"> Donwload CV </Button>
+    </div>
+    <div class="print:hidden">
+      <Footer />
     </div>
   </body>
 </html>

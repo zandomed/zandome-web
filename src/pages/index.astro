@@ -2,17 +2,20 @@
 import { Picture } from 'astro:assets';
 
 import PictureProfile from '@/assets/images/profile-picture.png';
-import Button from '@/components/Button.astro';
+import Button from '@/components/shared/Button.astro';
 import Layout from '@/layouts/Base.astro';
 ---
 
 <Layout title="Miguel Mendoza | Zandome">
-  <div class="container mx-auto h-dvh">
-    <div class="flex h-dvh w-full flex-row">
-      <div class="flex flex-1 flex-col items-baseline justify-center">
-        <h1 class="text-title">Crafting Innovative Software Solutions for Tomorrow</h1>
+  <section class="container mx-auto h-dvh">
+    <div class="flex min-h-dvh w-full flex-col gap-y-10 md:flex-row">
+      <div class="order-2 flex flex-col items-baseline justify-center md:order-1 md:flex-1">
+        <h1>
+          <span class="block text-2xl italic text-shadow-bahama-blue-lighter"> Hello there!</span>
+          <span class="bold block text-5xl"> I'm Miguel Mendoza</span>
+        </h1>
         <p class="mt-6">
-          I am a passionate software developer with a knack for creating efficient and scalable
+          A passionate Software Developer with a knack for creating efficient and scalable
           applications. My journey in technology is driven by a commitment to continuous learning
           and a desire to solve real-world problems.
         </p>
@@ -21,20 +24,22 @@ import Layout from '@/layouts/Base.astro';
           <!-- <Button>Contact</Button> -->
         </div>
       </div>
-      <div class="flex flex-1 items-center justify-center">
-        <Picture
-          formats={['webp', 'jpeg']}
-          format="webp"
-          src={PictureProfile}
-          alt="Profile"
-          fetchpriority="high"
-          transition:animate="slide"
-          transition:name="profile"
-          class="aspect-square w-30 rounded-full object-cover not-print:border-2 not-print:border-white"
-        />
+      <div class="order-1 flex items-center justify-center md:order-2 md:flex-1">
+        <div class="flex w-2/3 items-center justify-center">
+          <Picture
+            formats={['webp', 'jpeg']}
+            format="webp"
+            src={PictureProfile}
+            alt="Profile"
+            fetchpriority="high"
+            transition:animate="slide"
+            transition:name="profile"
+            class="aspect-square rounded-full border-2 border-white object-cover"
+          />
+        </div>
       </div>
     </div>
-  </div>
+  </section>
   <!-- <div class="flex h-full w-full flex-col items-center justify-center">
     <div class="mb-6 max-w-[200px]">
       <ZandomeLogo />

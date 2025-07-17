@@ -1,4 +1,6 @@
 ---
+import Skill from './Skill.astro';
+
 type Props = {
   site: string;
   grade: string;
@@ -51,7 +53,7 @@ const placeWork = isRemote ? 'Remote' : 'On-site';
 ---
 
 <article>
-  <header class="flex items-center justify-between gap-x-2">
+  <header class="flex flex-col justify-between gap-x-2 md:flex-row md:items-center">
     <div class="flex flex-col">
       <span class="text-base font-bold print:text-cv-body">{experience.site}</span>
       <h6 class="text-base print:text-cv-body">
@@ -60,7 +62,7 @@ const placeWork = isRemote ? 'Remote' : 'On-site';
       </h6>
     </div>
 
-    <div class="flex flex-col items-end">
+    <div class="flex flex-col md:items-end">
       <span class="text-base not-print:text-bahama-blue-light print:text-cv-body print:font-bold">
         {experience.location ? experience.location : ''}
         <span class="font-bold italic not-print:text-bahama-blue-light print:hidden"
@@ -92,9 +94,7 @@ const placeWork = isRemote ? 'Remote' : 'On-site';
     experience.technologies && (
       <div class="mt-2">
         {experience.technologies.sort().map((tech) => (
-          <span class="mr-2 mb-2 inline-block rounded-full bg-white/10 px-3 py-1 text-sm print:hidden">
-            {tech}
-          </span>
+          <Skill technology={tech} />
         ))}
       </div>
     )

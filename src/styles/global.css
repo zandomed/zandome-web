@@ -52,12 +52,17 @@
   --animate-logo-draw: logo-draw-stroke 2.5s linear 700ms both, logo-fill 2s ease-out 2s both;
 }
 
+@utility separator {
+  @apply mx-2 text-gray-500 content-['|'] hover:underline;
+}
+
 @layer components {
   .cv__contact {
-    @apply flex items-center;
+    @apply flex flex-col items-center;
+    @apply lg:flex-row;
 
     .cv__contact__item + .cv__contact__item::before {
-      @apply mx-2 text-gray-500 content-['|'] hover:underline;
+      @apply lg:separator;
     }
 
     .cv__contact__item {

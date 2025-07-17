@@ -1,0 +1,32 @@
+---
+import ZandomeLogo from '@/components/ZandomeLogo.astro';
+
+import Button from './Button.astro';
+---
+
+<header class="fixed z-50 w-full bg-background">
+  <div class="container mx-auto flex items-center justify-between px-5 py-4">
+    <a
+      href="/"
+      class="h-10 w-14"
+      transition:name="logo"
+      transition:animate="initial"
+      transition:persist
+    >
+      <picture>
+        <ZandomeLogo isNegative />
+      </picture>
+    </a>
+    <!-- <nav>
+      <ul class="flex space-x-4">
+        <li>Home</li>
+        <li>About Me</li>
+        <li>My Skills</li>
+        <li>Projects</li>
+      </ul>
+    </nav> -->
+    <div class="socials">
+      <Button href="mailto:miguel@zandome.dev"> Contact Me </Button>
+    </div>
+  </div>
+</header>

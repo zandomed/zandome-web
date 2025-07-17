@@ -4,7 +4,7 @@ import { Picture } from 'astro:assets';
 
 import Jobs from '@/assets/database/jobs.json';
 import PictureProfile from '@/assets/images/profile-picture.png';
-import ExperienceCard from '@/components/ExperienceCard.astro';
+import ExperienceCard from '@/components/Curriculum/ExperienceCard.astro';
 import Layout from '@/layouts/CV.astro';
 
 const LINKEDIN_USERNAME = 'zandome';
@@ -31,7 +31,10 @@ const EMAIL_URL = `mailto:${EMAIL}`;
         class="aspect-square w-30 rounded-full object-cover not-print:border-2 not-print:border-white print:w-20"
       />
       <div class="flex flex-col items-center justify-center">
-        <h1 class="text-2xl font-bold print:text-cv-title">Miguel Enrique Mendoza Rivero</h1>
+        <h1 class="text-center text-2xl font-bold print:text-cv-title">
+          Miguel Enrique Mendoza Rivero
+        </h1>
+        <h2 class="text-center text-xl print:text-cv-subtitle">Senior Software Engineer</h2>
       </div>
       <div aria-label="Contact" class="cv__contact">
         <a href={EMAIL_URL} class="cv__contact__item hover:underline">
@@ -44,10 +47,14 @@ const EMAIL_URL = `mailto:${EMAIL}`;
           <Icon name="mdi:linkedin" class="text-base print:text-cv-body" />
           <span>{LINKEDIN_URL}</span>
         </a>
-        <a href={PHONE_NUMBER_URL} class="cv__contact__item hover:underline">
-          <Icon name="mdi:phone" class="text-base print:text-cv-body" />
-          <span>{PHONE_NUMBER}</span>
-        </a>
+        {
+          PHONE_NUMBER && (
+            <a href={PHONE_NUMBER_URL} class="cv__contact__item hover:underline">
+              <Icon name="mdi:phone" class="text-base print:text-cv-body" />
+              <span>{PHONE_NUMBER}</span>
+            </a>
+          )
+        }
         <div class="cv__contact__item">
           <Icon name="mdi:map-marker" class="text-base print:text-cv-body" />
           <span>Madrid, Spain</span>
@@ -56,10 +63,11 @@ const EMAIL_URL = `mailto:${EMAIL}`;
     </section>
     <section class="cv__section border-t-1 border-t-gray-400 pt-2" aria-label="Summary">
       <p class="print:text-cv-body print:italic">
-        Self-taught software developer with over 7 years of experience building and leading web and
-        mobile solutions in corporate environments. Proven track record in delivering scalable
-        systems, improving development processes, and aligning technical execution with business
-        goals.
+        Self-taught Senior Software Engineer with over 7 years of experience designing and building
+        scalable, high-performance web and mobile applications. Proven track record in leading
+        cross-functional teams, defining frontend architecture, and aligning technical execution
+        with business strategy. Specialized in component-based architectures, performance
+        optimization, and digital transformation of legacy systems.
       </p>
     </section>
     <section class="cv__section" aria-label="Experience">
@@ -93,18 +101,18 @@ const EMAIL_URL = `mailto:${EMAIL}`;
     </section>
     <section class="cv__section" aria-label="Skills">
       <header class="flex items-center gap-x-4 border-b-1 border-b-gray-400">
-        <h3 class="cv__section__title">Additional Skills</h3>
+        <h3 class="cv__section__title">Skills</h3>
       </header>
-      <ul class="list-decimal pl-8 text-base print:text-cv-body">
+      <ul class="list-disc pl-8 text-base print:text-cv-body">
         <li>
-          <span class="text-lg font-bold print:text-cv-subtitle"> Technical Leadership </span>
+          <span class="text-base font-bold print:text-cv-body"> Technical Leadership </span>
           <p class="text-base print:text-cv-body">
             Proven ability to guide development teams, enforce coding standards, and contribute to
             scalable architectural decisions.
           </p>
         </li>
         <li>
-          <span class="text-lg font-bold print:text-cv-subtitle"
+          <span class="text-base font-bold print:text-cv-body"
             >Problem Solving & Critical Thinking</span
           >
           <p class="text-base print:text-cv-body">
@@ -113,30 +121,28 @@ const EMAIL_URL = `mailto:${EMAIL}`;
           </p>
         </li>
         <li>
-          <span class="text-lg font-bold print:text-cv-subtitle">Self-Driven Learning</span>
+          <span class="text-base font-bold print:text-cv-body">Self-Driven Learning</span>
           <p class="text-base print:text-cv-body">
             Fully self-taught developer with a strong commitment to continuous learning and
             mastering new technologies independently.
           </p>
         </li>
         <li>
-          <span class="text-lg font-bold print:text-cv-subtitle"
-            >Cross-Functional Collaboration</span
-          >
+          <span class="text-base font-bold print:text-cv-body">Cross-Functional Collaboration</span>
           <p class="text-base print:text-cv-body">
             Experience working closely with product, marketing, and data teams to align technical
             solutions with business and user needs.
           </p>
         </li>
         <li>
-          <span class="text-lg font-bold print:text-cv-subtitle">Product-Oriented Mindset</span>
+          <span class="text-base font-bold print:text-cv-body">Product-Oriented Mindset</span>
           <p class="text-base print:text-cv-body">
             Focused on delivering real value by prioritizing usability, performance, and business
             outcomes in every technical decision.
           </p>
         </li>
         <li>
-          <span class="text-lg font-bold print:text-cv-subtitle">Adaptability</span>
+          <span class="text-base font-bold print:text-cv-body">Adaptability</span>
           <p class="text-base print:text-cv-body">
             Demonstrated ability to thrive in diverse industries, tech stacks, and multicultural
             teams, both in startups and large organizations.
