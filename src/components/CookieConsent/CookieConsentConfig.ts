@@ -57,6 +57,7 @@ export function updateGtagConsent() {
 }
 
 export const config: CookieConsentConfig = {
+  root: '#cc-container',
   guiOptions: {
     consentModal: {
       layout: 'box inline',

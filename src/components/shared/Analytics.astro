@@ -12,24 +12,27 @@
     SERVICE_PERSONALIZATION_STORAGE,
     SERVICE_SECURITY_STORAGE,
   } from '../CookieConsent/CookieConsentConfig.ts';
+
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag() {
     window.dataLayer.push(arguments);
   };
 
-  window.gtag('js', new Date());
+  document.addEventListener('astro:page-load', () => {
+    window.gtag('js', new Date());
 
-  window.gtag('consent', 'default', {
-    [SERVICE_AD_STORAGE]: 'denied',
-    [SERVICE_AD_USER_DATA]: 'denied',
-    [SERVICE_AD_PERSONALIZATION]: 'denied',
-    [SERVICE_ANALYTICS_STORAGE]: 'denied',
-    [SERVICE_FUNCTIONALITY_STORAGE]: 'denied',
-    [SERVICE_PERSONALIZATION_STORAGE]: 'denied',
-    [SERVICE_SECURITY_STORAGE]: 'denied',
-  });
+    window.gtag('consent', 'default', {
+      [SERVICE_AD_STORAGE]: 'denied',
+      [SERVICE_AD_USER_DATA]: 'denied',
+      [SERVICE_AD_PERSONALIZATION]: 'denied',
+      [SERVICE_ANALYTICS_STORAGE]: 'denied',
+      [SERVICE_FUNCTIONALITY_STORAGE]: 'denied',
+      [SERVICE_PERSONALIZATION_STORAGE]: 'denied',
+      [SERVICE_SECURITY_STORAGE]: 'denied',
+    });
 
-  window.gtag('config', import.meta.env.ANALYTICS_GOOGLE_ID, {
-    page_path: window.location.pathname,
+    window.gtag('config', import.meta.env.ANALYTICS_GOOGLE_ID, {
+      page_path: window.location.pathname,
+    });
   });
 </script>

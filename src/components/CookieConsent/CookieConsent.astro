@@ -1,19 +1,5 @@
 ---
 import 'vanilla-cookieconsent/dist/cookieconsent.css';
-
-// const CAT_NECESSARY = 'necessary';
-// const CAT_ANALYTICS = 'analytics';
-// const CAT_ADVERTISEMENT = 'advertisement';
-// const CAT_FUNCTIONALITY = 'functionality';
-// const CAT_SECURITY = 'security';
-
-// const SERVICE_AD_STORAGE = 'ad_storage';
-// const SERVICE_AD_USER_DATA = 'ad_user_data';
-// const SERVICE_AD_PERSONALIZATION = 'ad_personalization';
-// const SERVICE_ANALYTICS_STORAGE = 'analytics_storage';
-// const SERVICE_FUNCTIONALITY_STORAGE = 'functionality_storage';
-// const SERVICE_PERSONALIZATION_STORAGE = 'personalization_storage';
-// const SERVICE_SECURITY_STORAGE = 'security_storage';
 ---
 
 <script>
@@ -24,74 +10,17 @@ import 'vanilla-cookieconsent/dist/cookieconsent.css';
   // toggle custom black theme
   // document.body.classList.add('cc--elegant-black');
   run(config);
-  // run({
-  //   guiOptions: {
-  //     consentModal: {
-  //       layout: 'box inline',
-  //       position: 'bottom right',
-  //     },
-  //     preferencesModal: {
-  //       layout: 'box',
-  //       position: 'right',
-  //       equalWeightButtons: true,
-  //       flipButtons: false,
-  //     },
-  //   },
-  //   categories: {
-  //     necessary: {
-  //       enabled: true,
-  //       readOnly: true,
-  //     },
-  //     functionality: {},
-  //     analytics: {},
-  //   },
-  //   language: {
-  //     default: 'en',
-  //     autoDetect: 'browser',
-  //     translations: {
-  //       en: {
-  //         consentModal: {
-  //           title: "Hello traveller, it's cookie time!",
-  //           description:
-  //             'This website uses cookies to enhance the user experience. You can choose to accept or reject analytics cookies.',
-  //           acceptAllBtn: 'Accept all',
-  //           acceptNecessaryBtn: 'Only necessary',
-  //           showPreferencesBtn: 'Manage preferences',
-  //           // footer: '<a href="#link">Privacy Policy</a>\n<a href="#link">Terms and conditions</a>',
-  //         },
-  //         preferencesModal: {
-  //           title: 'Cookie preferences',
-  //           // acceptAllBtn: 'Accept all',
-  //           // acceptNecessaryBtn: 'Reject all',
-  //           // savePreferencesBtn: 'Save preferences',
-  //           // closeIconLabel: 'Close modal',
-  //           // serviceCounterLabel: 'Service|Services',
-  //           sections: [
-  //             {
-  //               title: 'Strictly necessary cookies',
-  //               description: 'These cookies are essential for the website to function properly.',
-  //             },
-  //             {
-  //               title: 'Analytics cookies',
-  //               description:
-  //                 'These cookies help us understand how visitors interact with the website.',
-  //               linkedCategory: 'analytics',
-  //             },
-  //           ],
-  //         },
-  //       },
-  //     },
-  //   },
-  //   onConsent: ({ cookie }) => {
-  //     if (cookie.categories.includes('analytics')) {
-  //       // ✅ Update GTAG consent only if accepted
-  //       window.gtag('consent', 'update', {
-  //         analytics_storage: 'granted',
-  //       });
+</script>
+<script is:inline>
+  // Restore the `show--consent` class if it was present before the page swap
+  document.addEventListener('astro:before-preparation', () => {
+    const htmlClassName = window.document.documentElement.className;
+    const consentClassPresent = htmlClassName.includes('show--consent') ? true : false;
+    window._showConsentClass = consentClassPresent;
+  });
 
-  //       // (Optional) log event or config again
-  //       window.gtag('config', 'G-XXXXXXX');
-  //     }
-  //   },
-  // });
+  document.addEventListener('astro:before-swap', (event) => {
+    const showConsent = window._showConsentClass ? ` show--consent` : '';
+    event.newDocument.documentElement.className += showConsent;
+  });
 </script>
