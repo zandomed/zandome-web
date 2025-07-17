@@ -59,10 +59,10 @@
 @layer components {
   .cv__contact {
     @apply flex flex-col items-center;
-    @apply lg:flex-row;
+    @apply lg:flex-row print:flex-row;
 
     .cv__contact__item + .cv__contact__item::before {
-      @apply lg:separator;
+      @apply lg:separator print:separator;
     }
 
     .cv__contact__item {

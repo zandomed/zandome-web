@@ -53,7 +53,7 @@ const placeWork = isRemote ? 'Remote' : 'On-site';
 ---
 
 <article>
-  <header class="flex flex-col justify-between gap-x-2 md:flex-row md:items-center">
+  <header class="flex flex-col justify-between gap-x-2 md:flex-row md:items-center print:flex-row">
     <div class="flex flex-col">
       <span class="text-base font-bold print:text-cv-body">{experience.site}</span>
       <h6 class="text-base print:text-cv-body">
@@ -62,7 +62,7 @@ const placeWork = isRemote ? 'Remote' : 'On-site';
       </h6>
     </div>
 
-    <div class="flex flex-col md:items-end">
+    <div class="flex flex-col md:items-end print:items-end">
       <span class="text-base not-print:text-bahama-blue-light print:text-cv-body print:font-bold">
         {experience.location ? experience.location : ''}
         <span class="font-bold italic not-print:text-bahama-blue-light print:hidden"
