@@ -1,0 +1,102 @@
+---
+import Skill from './Skill.astro';
+
+type Props = {
+  site: string;
+  grade: string;
+  startDate?: null | string;
+  endDate?: null | string;
+  onlyShowEndDate?: boolean;
+  goals?: string[];
+  location: string;
+  url?: string | null;
+  isRemote?: boolean;
+  technologies?: string[];
+};
+
+const LOCALE: Intl.LocalesArgument = 'en-US';
+const LOCALE_DATE_CONFIG: Intl.DateTimeFormatOptions = {
+  year: 'numeric',
+  month: 'long',
+};
+
+const {
+  startDate,
+  endDate,
+  isRemote = false,
+  onlyShowEndDate = false,
+  ...experience
+} = Astro.props;
+
+function getStartDate() {
+  if (onlyShowEndDate) {
+    return null;
+  }
+
+  if (!startDate) return null;
+
+  return new Date(startDate).toLocaleDateString(LOCALE, LOCALE_DATE_CONFIG);
+}
+
+function getEndDate() {
+  const isCurrent = endDate === null;
+
+  if (isCurrent) return 'Present';
+
+  if (!endDate) return '';
+  return new Date(endDate).toLocaleDateString(LOCALE, LOCALE_DATE_CONFIG);
+}
+
+const startDateLocaleString = getStartDate();
+const endDateLocaleString = getEndDate();
+const placeWork = isRemote ? 'Remote' : 'On-site';
+---
+
+<article>
+  <header class="flex flex-col justify-between gap-x-2 md:flex-row md:items-center">
+    <div class="flex flex-col">
+      <span class="text-base font-bold print:text-cv-body">{experience.site}</span>
+      <h6 class="text-base print:text-cv-body">
+        {experience.grade}
+        <br />
+      </h6>
+    </div>
+
+    <div class="flex flex-col md:items-end">
+      <span class="text-base not-print:text-bahama-blue-light print:text-cv-body print:font-bold">
+        {experience.location ? experience.location : ''}
+        <span class="font-bold italic not-print:text-bahama-blue-light print:hidden"
+          >({placeWork})</span
+        >
+      </span>
+      {
+        (startDateLocaleString || endDateLocaleString) && (
+          <span class="text-base text-nowrap print:text-cv-body">
+            {startDateLocaleString}
+            {startDateLocaleString && endDateLocaleString && '-'}
+            {endDateLocaleString}
+          </span>
+        )
+      }
+    </div>
+  </header>
+  <p class="mt-2 text-base not-print:text-java-blue-lightest print:text-cv-body">
+    <ul class="list-disc px-8 text-base print:text-cv-body">
+      {
+        experience.goals &&
+          experience.goals.map((goal) => {
+            return <li>{goal}</li>;
+          })
+      }
+    </ul>
+  </p>
+  {
+    experience.technologies && (
+      <div class="mt-2">
+        {experience.technologies.sort().map((tech) => (
+          <Skill technology={tech} />
+        ))}
+      </div>
+    )
+  }
+</article>

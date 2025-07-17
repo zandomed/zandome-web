@@ -1,5 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
 @import 'tailwindcss';
 
 /* Enable Dark Mode */
@@ -36,14 +36,46 @@
 
   --color-background: var(--color-bahama-blue-darkest);
 
-  --text-title: 3.5rem;
-  --text-title--line-height: 120%;
-  --text-title--letter-spacing: -1%;
+  /* Font Size to CV Export */
+  --text-cv-title: 24px;
+  --text-cv-title--line-height: 28px;
 
-  --font-sans: 'Poppins', sans-serif;
-  --animate-logo-draw: logo-draw-stroke 3.5s linear 700ms both, logo-fill 3s ease-out 2.5s both;
-  --animate-text-loading-fade: text-loading-fade 2s ease 700ms both;
-  --animate-text-loading-dot-pulse: text-loading-dot-pulse 1.4s ease-in-out infinite both;
+  --text-cv-subtitle: 13px;
+  --text-cv-subtitle--line-height: 17px;
+
+  --text-cv-body: 12px;
+  --text-cv-body--line-height: 16px;
+
+  --font-display: 'Poppins', sans-serif;
+  --font-cv: 'STIX Two Text', serif;
+
+  --animate-logo-draw: logo-draw-stroke 2.5s linear 700ms both, logo-fill 2s ease-out 2s both;
+}
+
+@utility separator {
+  @apply mx-2 text-gray-500 content-['|'] hover:underline;
+}
+
+@layer components {
+  .cv__contact {
+    @apply flex flex-col items-center;
+    @apply lg:flex-row;
+
+    .cv__contact__item + .cv__contact__item::before {
+      @apply lg:separator;
+    }
+
+    .cv__contact__item {
+      @apply inline-flex items-center gap-x-1 print:text-cv-body;
+    }
+  }
+
+  section.cv__section {
+    @apply flex flex-col gap-y-2 print:gap-1;
+    .cv__section__title {
+      @apply text-2xl font-semibold uppercase print:text-cv-subtitle print:font-bold;
+    }
+  }
 }
 
 @layer base {
@@ -55,6 +87,7 @@
     height: 100vh;
     color-scheme: dark;
     background-color: var(--color-background);
+    @apply font-display;
   }
 
   body {
@@ -129,28 +162,5 @@
     fill-opacity: 1;
     stroke-opacity: 0;
     stroke-width: 1px;
-  }
-}
-
-@keyframes text-loading-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes text-loading-dot-pulse {
-  0% {
-    opacity: 0.2;
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.2;
   }
 }

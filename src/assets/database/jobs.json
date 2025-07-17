@@ -1,0 +1,126 @@
+[
+  {
+    "site": "Solera Holdings, LLC.",
+    "grade": "Software Manager Engineer",
+    "startDate": "2024-11-28T00:00:00+00:00",
+    "endDate": null,
+    "goals": [
+      "Led a team of 7 direct developers and 4 indirect contributors across two major projects.",
+      "Migrated a legacy .NET/C# platform to a modern Web Components-based React architecture, improving performance by 25%.",
+      "Made a scalable UI component library reducing screen development time by 50% and UI/responsive bugs by 80%.",
+      "Defined frontend architectural guidelines and collaborated on infrastructure decisions."
+    ],
+    "location": "Madrid, Spain",
+    "url": "https://solera.com",
+    "isRemote": false,
+    "technologies": ["JavaScript", ".NET", "React", "Auth0", "HTML/CSS", "NPM"]
+  },
+  {
+    "site": "PurpleFire",
+    "grade": "Senior Frontend Developer",
+    "startDate": "2024-07-01T00:00:00+00:00",
+    "endDate": "2024-10-01T00:00:00+00:00",
+    "goals": [
+      "Supported CRO and frontend teams in optimizing Shopify/WordPress-based eCommerce sites.",
+      "Achieved up to 90% improvement in KPIs through frontend performance enhancements.",
+      "Delivered cross-platform UI improvements using Astro and modern JS techniques."
+    ],
+    "location": "Copenhagen, Denmark",
+    "url": "https://purplefire.io",
+    "isRemote": true,
+    "technologies": ["JavaScript", "HTML/CSS", "React", "WordPress", "CRO tools", "UX Optimization"]
+  },
+  {
+    "site": "Southern Code",
+    "grade": "Senior Frontend Developer",
+    "startDate": "2021-12-01T00:00:00+00:00",
+    "endDate": "2024-07-01T00:00:00+00:00",
+    "goals": [
+      "Delivered core features for Mexican Stock Exchange, Arlo Security, 3Sixty, and Ungga.",
+      "Took Participated in all frontend architecture decisions and mentored 3 developers.",
+      "Implemented Microfrontend architecture for modular scalability.",
+      "Built Clean Architecture (Angular/BVM), MVVM (Swift/Arlo Security), Factory-based dynamic checkout (NextJS/3Sixty)."
+    ],
+    "location": "Cordoba, Argentina",
+    "url": "https://southerncode.us",
+    "isRemote": true,
+    "technologies": [
+      "JavaScript",
+      "TypeScript",
+      "Next.js",
+      "Angular",
+      "Python",
+      "Swift",
+      "Azure",
+      "Docker"
+    ]
+  },
+  {
+    "site": "IbisDev",
+    "grade": "Cross Platform Developer",
+    "startDate": "2021-10-01T00:00:00+00:00",
+    "endDate": "2022-01-01T00:00:00+00:00",
+    "goals": [
+      "Enhanced responsive and secure checkout UI across iOS and Android",
+      "Optimized performance and UX across iOS and Android devices."
+    ],
+    "location": "Paris, France",
+    "url": "https://www.ibisdev.tech/",
+    "isRemote": true,
+    "technologies": ["JavaScript", "React Native", "Stripe", "Swift", "Android"]
+  },
+  {
+    "site": "BrickControl",
+    "grade": "Senior Frontend Developer",
+    "startDate": "2020-01-01T00:00:00+00:00",
+    "endDate": "2021-12-01T00:00:00+00:00",
+    "goals": [
+      "Led a frontend team of 6 in migrating a legacy system to Angular.",
+      "Developed a custom Angular RouterModule extension to support stateful tab-based navigation.",
+      "Defined frontend architecture and implemented scalable delivery processes."
+    ],
+    "location": "Madrid, Spain",
+    "url": "https://www.brickcontrol.com/es/",
+    "isRemote": true,
+    "technologies": ["Angular", "TypeScript"]
+  },
+  {
+    "site": "Qubithat",
+    "grade": "Software Developer",
+    "startDate": "2020-06-01T00:00:00+00:00",
+    "endDate": "2020-07-01T00:00:00+00:00",
+    "goals": [
+      "Contributed to projects including Yama Club, Diri, PilloFON, and Space Móvil.",
+      "Boosted application performance by 22% through architectural improvements.",
+      "Built reservation system integrated with real-time door access in Yama Club."
+    ],
+    "location": "Bogota, Colombia",
+    "url": null,
+    "isRemote": true,
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "React Native",
+      "Flutter",
+      "Android",
+      "Swift"
+    ]
+  },
+  {
+    "site": "CADI F1",
+    "grade": "Full Stack Developer",
+    "startDate": "2018-09-01T00:00:00+00:00",
+    "endDate": "2019-12-01T00:00:00+00:00",
+    "goals": [
+      "Led development of KPI dashboard system (web, mobile, desktop) for SMEs.",
+      "Began as frontend developer, promoted to lead a team of 5 developers.",
+      "Designed system architecture and coordinated team activities end-to-end",
+      "Acted as project lead and developer across web solutions with fast turnaround."
+    ],
+    "location": "Barquisimeto, Venezuela",
+    "url": null,
+    "isRemote": false,
+    "technologies": ["TypeScript", "Angular", "Ionic", "PHP", "ElectronJS", "Android", "Swift"]
+  }
+]
