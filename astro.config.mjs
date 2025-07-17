@@ -1,7 +1,5 @@
-import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel';
 import playformCompress from '@playform/compress';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
@@ -14,11 +12,6 @@ const PDF_MARGIN = 40;
 export default defineConfig({
   site: 'https://zandome.com',
   integrations: [
-    partytown({
-      config: {
-        forward: ['dataLayer.push'],
-      },
-    }),
     react(),
     sitemap(),
     playformCompress(),
@@ -43,12 +36,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: 'static',
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-    maxDuration: 8,
-  }),
   redirects: {
     '/curriculum': {
       status: 302,

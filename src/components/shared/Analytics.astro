@@ -1,21 +1,35 @@
----
-const GoogleAnalyticsID = import.meta.env.ANALYTICS_GOOGLE_ID;
----
-
-<!-- Google tag (gtag.js) -->
 <script
   is:inline
-  type="text/partytown"
-  async
-  src={`https://www.googletagmanager.com/gtag/js?id=${GoogleAnalyticsID}`}></script>
-<script is:inline type="text/partytown" define:vars={{ GoogleAnalyticsID }}>
+  src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.ANALYTICS_GOOGLE_ID}`}
+></script>
+<script>
+  import {
+    SERVICE_AD_PERSONALIZATION,
+    SERVICE_AD_STORAGE,
+    SERVICE_AD_USER_DATA,
+    SERVICE_ANALYTICS_STORAGE,
+    SERVICE_FUNCTIONALITY_STORAGE,
+    SERVICE_PERSONALIZATION_STORAGE,
+    SERVICE_SECURITY_STORAGE,
+  } from '../CookieConsent/CookieConsentConfig.ts';
   window.dataLayer = window.dataLayer || [];
-  function gtag(...args) {
-    window.dataLayer.push(args);
-  }
-  gtag('js', new Date());
+  window.gtag = function gtag() {
+    window.dataLayer.push(arguments);
+  };
 
-  gtag('config', GoogleAnalyticsID, {
+  window.gtag('js', new Date());
+
+  window.gtag('consent', 'default', {
+    [SERVICE_AD_STORAGE]: 'denied',
+    [SERVICE_AD_USER_DATA]: 'denied',
+    [SERVICE_AD_PERSONALIZATION]: 'denied',
+    [SERVICE_ANALYTICS_STORAGE]: 'denied',
+    [SERVICE_FUNCTIONALITY_STORAGE]: 'denied',
+    [SERVICE_PERSONALIZATION_STORAGE]: 'denied',
+    [SERVICE_SECURITY_STORAGE]: 'denied',
+  });
+
+  window.gtag('config', import.meta.env.ANALYTICS_GOOGLE_ID, {
     page_path: window.location.pathname,
   });
 </script>

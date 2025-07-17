@@ -1,12 +1,18 @@
 <footer>
   <div class="container mx-auto px-4 py-8 text-center">
-    <p class="text-gray-600 dark:text-gray-400">
-      © {new Date().getFullYear()} Miguel Mendoza. All rights reserved.
-    </p>
-    <p class="mt-2 text-gray-500 dark:text-gray-500">
-      Made with ❤️ by <a href="https://zandome.dev" class="font-bold hover:underline"
-        >Miguel Mendoza</a
+    <div class="flex items-center justify-center gap-x-2">
+      <p class="text-gray-600 after:separator dark:text-gray-400">
+        © {new Date().getFullYear()} Miguel Mendoza. All rights reserved.
+      </p>
+
+      <button
+        type="button"
+        class="cursor-pointer text-gray-600 hover:underline"
+        data-cc="show-preferencesModal">Cookie preferences</button
       >
+    </div>
+    <p class="mt-2 text-gray-500">
+      Made with ❤️ by <a href="/" class="font-bold hover:underline">Miguel Mendoza</a>
     </p>
   </div>
 </footer>
