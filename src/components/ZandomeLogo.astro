@@ -1,3 +1,11 @@
+---
+interface Props {
+  isNegative?: boolean;
+}
+
+const { isNegative = false } = Astro.props;
+---
+
 <svg
   id="zandome-logo"
   x="0px"
@@ -8,6 +16,7 @@
   style="enable-background:new 0 0 641 885;"
   xml:space="preserve"
 >
+  <title>Zandome</title>
   <defs>
     <linearGradient
       id="GRADIENT"
@@ -24,7 +33,7 @@
   </defs>
   <path
     style={{
-      fill: 'url(#GRADIENT)',
+      fill: isNegative ? '#fff' : 'url(#GRADIENT)',
       fillOpacity: 0,
       stroke: '#cbcbcb',
       strokeWidth: 6,

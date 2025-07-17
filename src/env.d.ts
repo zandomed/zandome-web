@@ -1,7 +1,7 @@
 import 'astro/astro-jsx';
 
 interface ImportMetaEnv {
-  readonly PUBLIC_ANALYTICS_GOOGLE_ID: string;
+  readonly ANALYTICS_GOOGLE_ID: string;
 }
 
 interface ImportMeta {

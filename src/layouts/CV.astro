@@ -1,0 +1,25 @@
+---
+import '@/styles/global.css';
+
+import { Header, Head, Button, Footer } from '@/components/shared';
+---
+
+<html lang="en" class="print:font-cv">
+  <head>
+    <Head title="Miguel Mendoza Curriculum" />
+  </head>
+  <body class="relative h-full w-full bg-background print:bg-white print:text-black">
+    <div class="print:hidden">
+      <Header />
+    </div>
+    <main class="mx-auto max-w-4xl not-print:px-5 not-print:pt-25 not-print:lg:px-0">
+      <slot />
+    </main>
+    <div class="fixed right-5 bottom-5 print:hidden">
+      <Button id="btn:download:cv" href="/cv.pdf" target="_blank"> Donwload CV </Button>
+    </div>
+    <div class="print:hidden">
+      <Footer />
+    </div>
+  </body>
+</html>
