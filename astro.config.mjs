@@ -6,6 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import pdf from 'astro-pdf';
+const environment = import.meta.env.NODE_ENV;
+const isProduction = environment === 'production';
 
 const PDF_MARGIN = 40;
 
@@ -19,6 +21,11 @@ export default defineConfig({
     playformCompress(),
     icon(),
     pdf({
+      launch: {
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
+        ignoreDefaultArgs: ['--disable-extensions'],
+        ...(isProduction && { executablePath: process.env.CHROMIUM_PATH }),
+      },
       pages: {
         '/cv': {
           path: 'cv.pdf',
